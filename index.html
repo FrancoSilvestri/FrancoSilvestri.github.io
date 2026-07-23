@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Franco Silvestri, Systems &amp; Backend Engineer</title>
+<meta name="description" content="Franco Silvestri is a systems, backend, and robotics engineer working on real-time perception, distributed systems, and enterprise platform engineering.">
+<style>
+  :root{
+    --bg:#0b0c0f;
+    --bg-2:#0f1116;
+    --surface:#131620;
+    --surface-2:#171b26;
+    --text:#eceae3;
+    --muted:#878d9a;
+    --faint:#565c68;
+    --hair:rgba(255,255,255,.09);
+    --hair-strong:rgba(255,255,255,.16);
+    --accent:#ff9d47;
+    --accent-soft:#ffb877;
+    --signal:#6ee7a0;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono","Cascadia Code","Fira Code",Menlo,Consolas,monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  /* faint blueprint grid + grain over the page */
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(var(--hair) 1px,transparent 1px),linear-gradient(90deg,var(--hair) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(ellipse 90% 60% at 50% 30%,#000 20%,transparent 78%);
+            mask-image:radial-gradient(ellipse 90% 60% at 50% 30%,#000 20%,transparent 78%);opacity:.35}
+  body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 28px}
+
+  /* ---------- nav ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(11,12,15,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:58px;max-width:1080px;margin:0 auto;padding:0 28px}
+  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.14em;font-weight:600}
+  .brand b{color:var(--accent)}
+  .nav-links{display:flex;gap:21px;font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+  .nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-links a.active{color:var(--accent)}
+  @media(max-width:760px){.nav-links{display:none}}
+
+  /* ---------- cinematic hero ---------- */
+  .hero-cinematic{position:relative;min-height:100svh;min-height:100dvh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;border-bottom:1px solid var(--hair)}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:#0b0c0f url("assets/hero.jpg") center/cover no-repeat;animation:kenburns 26s ease-in-out infinite alternate;will-change:transform}
+  @keyframes kenburns{from{transform:scale(1.06)}to{transform:scale(1.18) translate(-2%,-1.5%)}}
+  .hero-grade{position:absolute;inset:0;z-index:1;background:
+    linear-gradient(to top,rgba(6,7,9,.97) 6%,rgba(6,7,9,.5) 36%,rgba(6,7,9,.25) 64%,rgba(6,7,9,.55) 100%),
+    radial-gradient(ellipse 85% 65% at 28% 72%,transparent 38%,rgba(6,7,9,.6) 100%)}
+  .hero-content{position:relative;z-index:2;width:100%;max-width:1080px;margin:0 auto;padding:0 28px 9vh}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--signal);box-shadow:0 0 10px var(--signal);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  h1{font-family:var(--mono);font-weight:700;font-size:clamp(46px,10.5vw,116px);line-height:.94;letter-spacing:-.02em;text-transform:uppercase;text-shadow:0 2px 40px rgba(0,0,0,.4)}
+  .hero-tag{max-width:600px;margin-top:24px;font-size:clamp(16px,2.1vw,21px);color:#d8d5cc}
+  .hero-tag b{color:#fff;font-weight:600}
+  .cta-row{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px}
+  .btn{font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-decoration:none;padding:12px 20px;border-radius:3px;transition:.2s;display:inline-flex;align-items:center;gap:9px;cursor:pointer}
+  .btn-p{background:var(--accent);color:#181207;font-weight:600}
+  .btn-p:hover{background:var(--accent-soft);transform:translateY(-2px)}
+  .btn-s{border:1px solid var(--hair-strong);color:var(--text);background:rgba(11,12,15,.4)}
+  .btn-s:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+  .btn:active{transform:translateY(0) scale(.97)}
+  .li-ico{fill:var(--accent);flex-shrink:0}
+  .scroll-cue{position:absolute;z-index:2;left:50%;bottom:24px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:9px;font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+  .scroll-cue:hover{color:var(--accent)}
+  .scroll-cue .chev{width:14px;height:14px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);animation:bob 1.8s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:rotate(45deg) translateY(0);opacity:.5}50%{transform:rotate(45deg) translateY(4px);opacity:1}}
+
+  /* ---------- opening stat band ---------- */
+  .statband{padding:100px 0 6px}
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;font-family:var(--mono);font-size:12px;letter-spacing:.04em}
+  .tag{border:1px solid var(--hair-strong);border-radius:2px;padding:6px 11px;color:var(--muted)}
+  .tag .k{color:var(--accent-soft)}
+  .telemetry{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--hair);border-radius:5px;overflow:hidden;background:var(--surface)}
+  .stat{padding:22px 20px;border-right:1px solid var(--hair)}
+  .stat:last-child{border-right:none}
+  .stat .num{font-family:var(--mono);font-size:clamp(26px,4vw,38px);font-weight:700;color:var(--accent);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .stat .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--muted);margin-top:10px;text-transform:uppercase;line-height:1.4}
+  @media(max-width:720px){.telemetry{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:none}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--hair)}.statband{padding:64px 0 6px}}
+
+  /* ---------- sections (chapters) ---------- */
+  section{padding:76px 0;border-bottom:1px solid var(--hair)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:36px}
+  .sec-idx{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
+  .sec-title{font-family:var(--mono);font-size:clamp(20px,3.2vw,28px);font-weight:700;letter-spacing:-.01em;text-transform:uppercase}
+  .sec-rule{flex:1;height:1px;background:var(--hair);align-self:center;transform-origin:left}
+  .js .rv .sec-rule{transform:scaleX(0);transition:transform .9s ease .1s}
+  .rv.in .sec-rule{transform:scaleX(1)}
+
+  .about p{font-size:clamp(16px,1.9vw,20px);max-width:760px;color:#cbc8bf;margin-bottom:16px}
+  .about p:last-child{margin-bottom:0}
+  .about p b{color:var(--text)}
+
+  /* ---------- timeline (The Journey) ---------- */
+  .journey-intro{max-width:680px;color:#d0cdc4;font-size:clamp(15px,1.9vw,18px);margin-bottom:34px;font-style:italic}
+  .journey-intro b{color:var(--accent-soft);font-style:normal}
+  .timeline{position:relative;margin-top:6px}
+  .tl-line{position:absolute;left:20px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--hair-strong));z-index:0}
+  .js .tl-line{transform:scaleY(0);transform-origin:top;transition:transform 1.3s ease .1s}
+  .timeline.in .tl-line{transform:scaleY(1)}
+  .tl-node{position:relative;padding:0 0 32px 58px}
+  .tl-node:last-child{padding-bottom:4px}
+  .tl-dot{position:absolute;left:13px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:0 0 0 5px rgba(255,157,71,.1);z-index:1}
+  .tl-year{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--accent);letter-spacing:-.01em;line-height:1}
+  .tl-card h3{font-size:17px;font-weight:650;margin:6px 0 6px}
+  .tl-card p{font-size:14px;color:#c3c0b8;max-width:640px}
+  .tl-card p b{color:var(--text)}
+  .js .tl-node{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  .timeline.in .tl-node{opacity:1;transform:none}
+  .timeline.in .tl-node:nth-child(3){transition-delay:.06s}
+  .timeline.in .tl-node:nth-child(4){transition-delay:.12s}
+  .timeline.in .tl-node:nth-child(5){transition-delay:.18s}
+  .timeline.in .tl-node:nth-child(6){transition-delay:.24s}
+  .timeline.in .tl-node:nth-child(7){transition-delay:.30s}
+  .timeline.in .tl-node:nth-child(8){transition-delay:.36s}
+  .timeline.in .tl-node:nth-child(9){transition-delay:.42s}
+  /* certificate thumbnails */
+  .certs{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+  .cert-thumb{padding:0;border:1px solid var(--hair);border-radius:5px;overflow:hidden;background:#fff;cursor:pointer;transition:.2s;line-height:0}
+  .cert-thumb:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .cert-thumb img{width:158px;height:112px;object-fit:cover;display:block}
+  .cert-cap{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.04em;padding:6px 8px;background:var(--surface);border-top:1px solid var(--hair)}
+
+  /* ---------- lightbox ---------- */
+  .lightbox{position:fixed;inset:0;z-index:200;background:rgba(4,5,7,.93);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:26px}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:92vw;max-height:78vh;border-radius:6px;box-shadow:0 30px 90px -20px #000}
+  .lb-close{position:absolute;top:16px;right:22px;font-family:var(--mono);font-size:30px;line-height:1;color:var(--text);background:none;border:none;cursor:pointer}
+  .lb-close:hover{color:var(--accent)}
+  .lb-pdf{font-family:var(--mono);font-size:12px;color:var(--accent-soft);text-decoration:none;border:1px solid var(--hair-strong);border-radius:3px;padding:8px 14px}
+  .lb-pdf:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* ---------- experience entries ---------- */
+  .entry{display:grid;grid-template-columns:170px 1fr;gap:26px;padding:26px 0;border-top:1px solid var(--hair)}
+  .entry:first-of-type{border-top:none}
+  .entry .when{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.03em;padding-top:4px}
+  .entry .when .loc{display:block;color:var(--faint);margin-top:6px}
+  .entry h3{font-size:19px;font-weight:650;letter-spacing:-.01em}
+  .entry .org{font-family:var(--mono);font-size:12.5px;color:var(--accent-soft);margin-top:5px;letter-spacing:.02em}
+  .entry .sub{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:12px 0 4px;text-transform:uppercase;letter-spacing:.08em}
+  ul.pts{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:9px}
+  ul.pts li{position:relative;padding-left:20px;font-size:14.5px;color:#c3c0b8}
+  ul.pts li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-size:12px;top:1px}
+  ul.pts li b{color:var(--text);font-weight:650}
+  @media(max-width:720px){.entry{grid-template-columns:1fr;gap:10px}}
+  /* genworth two-rotation connector */
+  .rotations{position:relative;padding-left:24px;margin-top:14px}
+  .rotations::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--accent-soft));border-radius:2px}
+  .rotation{position:relative;padding-bottom:20px}
+  .rotation:last-child{padding-bottom:0}
+  .rotation::before{content:"";position:absolute;left:-23px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-shadow:0 0 0 3px rgba(255,157,71,.12)}
+  .rot-when{font-family:var(--mono);font-size:11.5px;color:var(--accent-soft);letter-spacing:.03em;margin-bottom:2px}
+
+  /* ---------- project cards ---------- */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--hair);border-radius:6px;padding:26px;transition:.22s;position:relative;overflow:hidden}
+  .card::after{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--accent);transition:width .3s}
+  .card:hover{border-color:var(--hair-strong);transform:translateY(-3px);background:var(--surface-2)}
+  .card:hover::after{width:100%}
+  .card:active{transform:scale(.992)}
+  .card .role{font-family:var(--mono);font-size:11px;letter-spacing:.09em;color:var(--accent);text-transform:uppercase}
+  .card h3{font-size:18.5px;font-weight:650;margin:12px 0 4px;letter-spacing:-.01em}
+  .card .yr{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+  .card p{font-size:14px;color:#bfbcb4;margin-top:13px}
+  .card p b{color:var(--text);font-weight:650}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .chips span{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--muted);border:1px solid var(--hair);border-radius:2px;padding:4px 8px}
+
+  /* ---------- split panels ---------- */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:720px){.split{grid-template-columns:1fr}}
+  .panel{border:1px solid var(--hair);border-radius:6px;padding:24px;background:var(--surface)}
+  .panel .role{font-family:var(--mono);font-size:11px;letter-spacing:.09em;color:var(--accent);text-transform:uppercase}
+  .panel h3{font-size:17px;font-weight:650;margin:11px 0 6px}
+  .panel .yr{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
+  .panel p{font-size:14px;color:#bfbcb4;margin-top:11px}
+  .panel a{color:var(--accent-soft);text-decoration:none;border-bottom:1px solid var(--hair-strong);transition:.2s}
+  .panel a:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* ---------- poster feature ---------- */
+  .poster{display:grid;grid-template-columns:1.1fr 1fr;gap:0;border:1px solid var(--hair);border-radius:8px;overflow:hidden;text-decoration:none;color:inherit;transition:.25s;background:var(--surface);margin-bottom:18px}
+  .poster:hover{border-color:var(--hair-strong);transform:translateY(-3px);box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
+  .poster-img{overflow:hidden;background:#fff;border-right:1px solid var(--hair)}
+  .poster-img img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .55s;max-height:460px}
+  .poster:hover .poster-img img{transform:scale(1.035)}
+  .poster-body{padding:28px}
+  .poster-body h3{font-size:18.5px;font-weight:650;margin:12px 0 8px;line-height:1.28;letter-spacing:-.01em}
+  .poster-body .yr{font-family:var(--mono);font-size:11.5px;color:var(--faint);line-height:1.5}
+  .poster-body p{font-size:13.5px;color:#bfbcb4;margin-top:13px}
+  .poster-body p b{color:var(--text);font-weight:650}
+  @media(max-width:720px){.poster{grid-template-columns:1fr}.poster-img img{max-height:300px}}
+
+  /* ---------- scene divider ---------- */
+  .scene{position:relative;height:52vh;min-height:330px;overflow:hidden;display:flex;align-items:flex-end;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+  .scene-bg{position:absolute;inset:-8% 0;z-index:0;background-size:cover;background-position:center;will-change:transform}
+  .scene::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(6,7,9,.92),rgba(6,7,9,.4) 55%,rgba(6,7,9,.6))}
+  .scene-cap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 28px 34px;width:100%}
+  .scene-cap .k{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+  .scene-cap h3{font-size:clamp(21px,3.6vw,34px);font-weight:700;max-width:660px;margin-top:10px;letter-spacing:-.01em;line-height:1.12}
+
+  /* ---------- field demos ---------- */
+  .demo-intro{max-width:720px;color:#c3c0b8;font-size:15px;margin-bottom:26px}
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:720px){.gallery{grid-template-columns:1fr}}
+  .shot{position:relative;border:1px solid var(--hair);border-radius:7px;overflow:hidden;background:#0a0b0e;margin:0}
+  .shot img{width:100%;height:290px;object-fit:cover;display:block;transition:transform .55s}
+  .shot:hover img{transform:scale(1.045)}
+  .shot:hover{border-color:var(--hair-strong)}
+  .shot:active{transform:scale(.992)}
+  .shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:38px 18px 16px;background:linear-gradient(to top,rgba(6,7,9,.95) 12%,rgba(6,7,9,.55) 62%,transparent);display:flex;flex-direction:column;gap:4px}
+  .shot .t{font-family:var(--mono);font-size:13px;color:var(--accent-soft);letter-spacing:.02em}
+  .shot .d{font-size:12.5px;color:#b7b4ac;line-height:1.42}
+  .demo-note{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:18px}
+  .demo-lead{position:relative;margin:0 0 16px;border:1px solid var(--hair);border-radius:8px;overflow:hidden;background:#0a0b0e}
+  .demo-lead img{width:100%;height:auto;max-height:400px;object-fit:cover;object-position:center 42%;display:block;transition:transform .6s}
+  .demo-lead:hover img{transform:scale(1.02)}
+  .demo-lead figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 20px 16px;background:linear-gradient(to top,rgba(6,7,9,.94) 12%,rgba(6,7,9,.5) 58%,transparent);font-family:var(--mono);font-size:12px;color:var(--accent-soft);letter-spacing:.02em}
+  .demo-feature{margin:0 0 16px;border:1px solid var(--hair);border-radius:8px;overflow:hidden;background:var(--surface)}
+  .demo-feature video{width:100%;max-height:540px;display:block;background:#000}
+  .demo-feature .seg-img{display:block;width:100%;background:#fff}
+  .demo-feature figcaption{padding:13px 16px;font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.55;border-top:1px solid var(--hair)}
+  .demo-feature figcaption b{color:var(--accent-soft)}
+
+  /* ---------- INIT FIU ---------- */
+  .init-lead{max-width:770px;color:#cbc8bf;font-size:clamp(15px,1.9vw,18px);margin-bottom:28px}
+  .init-lead b{color:var(--text)}
+  .init-workshops{display:grid;grid-template-columns:320px 1fr;gap:32px;align-items:start;margin-bottom:20px}
+  @media(max-width:720px){.init-workshops{grid-template-columns:1fr;gap:20px}}
+  .portrait{margin:0;border:1px solid var(--hair);border-radius:9px;overflow:hidden;background:var(--surface)}
+  .portrait img{width:100%;height:auto;display:block;transition:transform .55s}
+  .portrait:hover img{transform:scale(1.035)}
+  .portrait figcaption{font-family:var(--mono);font-size:11px;color:var(--muted);padding:12px 14px;line-height:1.5;border-top:1px solid var(--hair)}
+  .init-wk-body .role{font-family:var(--mono);font-size:11px;letter-spacing:.09em;color:var(--accent);text-transform:uppercase}
+  .init-wk-body h3{font-size:19px;font-weight:650;margin:10px 0 8px;letter-spacing:-.01em}
+  .init-wk-body p{font-size:14.5px;color:#c3c0b8;max-width:640px}
+  .stat-row{display:flex;flex-wrap:wrap;gap:18px;margin:14px 0 2px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+  .stat-row b{color:var(--accent);font-size:16px;font-variant-numeric:tabular-nums}
+  .init-preshellhacks img{width:100%;border:1px solid var(--hair);border-radius:6px;margin:12px 0 2px;display:block}
+  .embeds{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+  @media(max-width:720px){.embeds{grid-template-columns:1fr}}
+  .embed{border:1px solid var(--hair);border-radius:8px;overflow:hidden;background:var(--surface)}
+  .embed .label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent-soft);text-transform:uppercase;padding:12px 14px;border-bottom:1px solid var(--hair)}
+  .media-facade{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer;text-align:center;padding:16px;background:#0a0b0e radial-gradient(circle at 50% 42%,rgba(255,157,71,.14),transparent 62%)}
+  .media-facade.yt{aspect-ratio:16/9}
+  .media-facade.li{min-height:340px}
+  .media-facade.loaded{cursor:default;padding:0;gap:0;background:#000}
+  .media-facade.li.loaded{background:#fff}
+  .mf-play{width:58px;height:58px;border-radius:50%;background:var(--accent);position:relative;transition:.2s;box-shadow:0 8px 24px -6px rgba(255,157,71,.5)}
+  .media-facade:hover .mf-play{transform:scale(1.08);background:var(--accent-soft)}
+  .mf-play::after{content:"";position:absolute;top:50%;left:53%;transform:translate(-50%,-50%);border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #181207}
+  .mf-cap{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.05em;line-height:1.7}
+  .mf-cap a{color:var(--accent-soft);text-decoration:none}
+  .mf-cap a:hover{color:var(--accent)}
+  .media-facade.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .li-embed{background:#fff;display:flex;justify-content:center;padding:10px}
+  .li-embed iframe{width:100%;max-width:504px;height:399px;border:0;display:block}
+
+  /* ---------- skills ---------- */
+  .skillset{display:flex;flex-direction:column;gap:20px}
+  .skrow{display:grid;grid-template-columns:190px 1fr;gap:20px;align-items:start;padding-bottom:18px;border-bottom:1px solid var(--hair)}
+  .skrow:last-child{border-bottom:none}
+  .skrow .cat{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--accent-soft);text-transform:uppercase;padding-top:3px}
+  .skrow .items{display:flex;flex-wrap:wrap;gap:8px}
+  .skrow .items span{font-family:var(--mono);font-size:12.5px;color:#c3c0b8;border:1px solid var(--hair);border-radius:2px;padding:5px 10px;transition:.18s}
+  .skrow .items span:hover{border-color:var(--accent);color:var(--accent)}
+  @media(max-width:720px){.skrow{grid-template-columns:1fr;gap:10px}}
+
+  /* ---------- footer / credits ---------- */
+  footer{position:relative;z-index:1;padding:88px 0 52px;text-align:center;border-top:1px solid var(--hair)}
+  .credits-kicker{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+  footer .big{font-family:var(--mono);font-size:clamp(26px,5.2vw,46px);font-weight:700;text-transform:uppercase;letter-spacing:-.01em}
+  footer .big a{color:var(--accent);text-decoration:none}
+  footer .big a:hover{color:var(--accent-soft)}
+  .links{margin-top:30px;display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+  .foot-note{margin-top:44px;font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.06em}
+
+  /* ---------- reveal + progress ---------- */
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:100;background:linear-gradient(90deg,var(--accent),var(--accent-soft));box-shadow:0 0 10px var(--accent);transition:width .08s linear}
+  .js .rv{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  .js .gallery .shot,.js .grid .card,.js .skillset .skrow{opacity:0;transform:translateY(20px);transition:opacity .6s ease-out,transform .6s cubic-bezier(.2,.7,.2,1)}
+  .rv.in .shot,.rv.in .card,.rv.in .skrow{opacity:1;transform:none}
+  .rv.in .shot:nth-child(1),.rv.in .card:nth-child(1),.rv.in .skrow:nth-child(1){transition-delay:.04s}
+  .rv.in .shot:nth-child(2),.rv.in .card:nth-child(2),.rv.in .skrow:nth-child(2){transition-delay:.12s}
+  .rv.in .shot:nth-child(3),.rv.in .card:nth-child(3),.rv.in .skrow:nth-child(3){transition-delay:.20s}
+  .rv.in .shot:nth-child(4),.rv.in .card:nth-child(4),.rv.in .skrow:nth-child(4){transition-delay:.28s}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+
+  @media(prefers-reduced-motion:reduce){
+    .js .rv,.js .gallery .shot,.js .grid .card,.js .skillset .skrow,.js .tl-node{opacity:1;transform:none;transition:none}
+    .js .tl-line,.js .rv .sec-rule{transform:none;transition:none}
+    .dot,.hero-bg,.scroll-cue .chev{animation:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-in">
+    <div class="brand">FRANCO<b>.</b>SILVESTRI</div>
+    <div class="nav-links">
+      <a href="#journey">journey</a>
+      <a href="#work">work</a>
+      <a href="#projects">projects</a>
+      <a href="#demos">demos</a>
+      <a href="#research">research</a>
+      <a href="#init">init</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO (opening shot) ===== -->
+<header class="hero-cinematic">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grade" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="kicker"><span class="dot"></span> Systems, Backend and Robotics in Miami, FL</div>
+    <h1>Franco<br>Silvestri</h1>
+    <p class="hero-tag">I build <b>real-time, distributed, and backend systems</b>, from perception on quadruped robots to enterprise platforms at scale.</p>
+    <div class="cta-row">
+      <a class="btn btn-p" href="Franco_Silvestri_Resume.pdf">Download resume (PDF)</a>
+      <a class="btn btn-s" href="mailto:fransilvestri02@gmail.com">Email</a>
+      <a class="btn btn-s" href="https://www.linkedin.com/in/franco-silvestri-98022b212/" target="_blank" rel="noopener"><svg class="li-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#about" aria-label="Scroll down"><span>scroll</span><span class="chev"></span></a>
+</header>
+
+<div class="wrap">
+
+  <!-- opening stats -->
+  <div class="statband rv">
+    <div class="meta-row">
+      <span class="tag"><span class="k">GPA</span> 3.95 / 4.0</span>
+      <span class="tag"><span class="k">DEGREE</span> BS + MS (4+1), 2028</span>
+      <span class="tag"><span class="k">FOCUS</span> Distributed &amp; Real-Time Systems</span>
+      <span class="tag"><span class="k">LANGS</span> Python, C++, Java, JS/TS</span>
+    </div>
+    <div class="telemetry">
+      <div class="stat"><div class="num" data-count="22" data-suffix="×">0×</div><div class="lbl">Inference latency<br>reduction</div></div>
+      <div class="stat"><div class="num" data-count="2900" data-suffix="">0</div><div class="lbl">Automated tests<br>on the SaaS</div></div>
+      <div class="stat"><div class="num" data-count="100" data-suffix="+">0</div><div class="lbl">Enterprise systems<br>on CI/CD</div></div>
+      <div class="stat"><div class="num" data-count="16" data-suffix="+">0</div><div class="lbl">Robotics workshops<br>led &amp; taught</div></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about rv" id="about">
+    <div class="sec-head"><span class="sec-idx">00</span><span class="sec-title">About</span><span class="sec-rule"></span></div>
+    <p>Hi, I'm Franco. I like problems where <b>correctness, performance, and scale all matter at once</b>: running two deep models on a single embedded GPU in real time, keeping 100+ enterprise services shipping through hardened pipelines, or designing an authorization layer that no endpoint can bypass.</p>
+    <p>I work across the stack, from <b>C++ on robots</b> to <b>Python backends</b> to <b>Kubernetes in production</b>, and I care about systems that hold up after the demo is over. Most days you'll find me in the Applied Research Center lab, teaching a quadruped to understand the world a little better.</p>
+  </section>
+
+  <!-- THE JOURNEY -->
+  <section class="rv" id="journey">
+    <div class="sec-head"><span class="sec-idx">01</span><span class="sec-title">The Journey</span><span class="sec-rule"></span></div>
+    <p class="journey-intro">An early journey, filled with passion. It started years before college, and it <b>has not slowed down since</b>.</p>
+    <div class="timeline rv">
+      <div class="tl-line" aria-hidden="true"></div>
+
+      <div class="tl-node">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2020</div>
+          <h3>First lines of code, self-taught</h3>
+          <p>Before college, I taught myself to build. Online diplomas from <b>UTN Buenos Aires</b> in Python (225 hours, graded Excelente), Django, and Machine Learning with Python, plus my first freelance work.</p>
+          <div class="certs">
+            <button class="cert-thumb" data-full="assets/certs/cert-python.jpg" data-pdf="assets/certs/cert-python.pdf" aria-label="View Python diploma"><img src="assets/certs/cert-python.jpg" alt="Diploma in Python, UTN Buenos Aires" loading="lazy"><div class="cert-cap">Python diploma</div></button>
+            <button class="cert-thumb" data-full="assets/certs/cert-django.jpg" data-pdf="assets/certs/cert-django.pdf" aria-label="View Django certificate"><img src="assets/certs/cert-django.jpg" alt="Django certificate, UTN Buenos Aires" loading="lazy"><div class="cert-cap">Django</div></button>
+            <button class="cert-thumb" data-full="assets/certs/cert-ml.jpg" data-pdf="assets/certs/cert-ml.pdf" aria-label="View Machine Learning certificate"><img src="assets/certs/cert-ml.jpg" alt="Machine Learning with Python certificate, UTN Buenos Aires" loading="lazy"><div class="cert-cap">ML with Python</div></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2021</div>
+          <h3>First steps in robotics, in Argentina</h3>
+          <p>Joined the <b>Roboteam Experiencia STEM</b> program (IEEE WIE Argentina): my first hands-on steps in mechatronics with Arduino. This is where the passion for robots really started.</p>
+          <div class="certs">
+            <button class="cert-thumb" data-full="assets/certs/cert-roboteam.jpg" data-pdf="assets/certs/cert-roboteam.pdf" aria-label="View Roboteam certificate"><img src="assets/certs/cert-roboteam.jpg" alt="Roboteam Experiencia STEM participation certificate" loading="lazy"><div class="cert-cap">Roboteam STEM</div></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2023</div>
+          <h3>Computer Science at FIU, Honors College</h3>
+          <p>Started my BS in Computer Science in FIU's Honors College, and led the software team at <b>Panther Robotics</b>, exploring reinforcement learning for robotic-arm control.</p>
+        </div>
+      </div>
+
+      <div class="tl-node">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2024</div>
+          <h3>Robotics research at the Applied Research Center</h3>
+          <p>Became <b>Perception &amp; Systems Lead</b> on a DOE-funded robotics project, building real-time perception and distributed systems for a Boston Dynamics SPOT.</p>
+        </div>
+      </div>
+
+      <div class="tl-node">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2025</div>
+          <h3>First internship and leading at INIT</h3>
+          <p>First term in Genworth's IT Development Program, and stepped up as <b>Robotics Technical Lead and E-Board member at INIT</b>, teaching workshops and helping organize ShellHacks.</p>
+        </div>
+      </div>
+
+      <div class="tl-node">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2026</div>
+          <h3>Platform engineering and first-author research</h3>
+          <p>Returned to Genworth on the Architecture team (platform engineering and DevOps), presented <b>first-author research</b> at the FIU Undergraduate Research Conference, and moved my pharmacy SaaS toward its pilot launch.</p>
+        </div>
+      </div>
+
+      <div class="tl-node">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-year">2027 to 2028</div>
+          <h3>The next chapter</h3>
+          <p>Finishing the accelerated BS, then straight into the MS in Computer Science. Still chasing hard, real-world engineering problems.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="rv" id="work">
+    <div class="sec-head"><span class="sec-idx">02</span><span class="sec-title">Experience</span><span class="sec-rule"></span></div>
+
+    <div class="entry">
+      <div class="when">Jan 2024 - Present<span class="loc">FIU Applied Research Center<br>Miami, FL</span></div>
+      <div>
+        <h3>Robotics Research Assistant, Perception &amp; Systems Lead</h3>
+        <div class="org">DOE MSIPP, with Savannah River National Lab &amp; Oak Ridge Y-12</div>
+        <ul class="pts">
+          <li>Cut real-time inference latency <b>22×</b> over an unoptimized PyTorch GPU baseline (CUDA, quantization, TensorRT) for a DeepLabV3+/STEGO segmentation pipeline that <b>achieved a maximum of 72% mIoU</b>, running in production alongside a Gaussian Process model on <b>one Jetson Orin Nano</b>.</li>
+          <li>Designed a <b>sensor-agnostic ROS 2 node architecture</b> so new sensors integrate without touching downstream navigation, mapping, or visualization, then deployed across multiple robotic platforms.</li>
+          <li>Built <b>distributed ROS 2 components</b> in C++/Python and <b>designed the robot's networking infrastructure from scratch</b> (IP addressing, low-level Linux, DDS tuning, traffic prioritization), owning bottleneck analysis across the sensor-to-inference-to-operator path to hold real-time latency under load.</li>
+          <li>Built an online <b>Gaussian Process node in GPyTorch</b> (CUDA), fine-tuned to the live CO2 sensor response; exposes feed and predict ROS 2 services that return mean and uncertainty for adaptive sampling, running concurrently with the segmentation model on the Jetson.</li>
+          <li>Fused Velodyne lidar with six depth cameras into a unified point cloud; implemented SLAM with Nav2 planning and open-frontier exploration of unknown environments.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Summers 2025 &amp; 2026<span class="loc">Genworth Financial<br>Richmond, VA</span></div>
+      <div>
+        <h3>IT Development Program, Returning Intern</h3>
+        <div class="org">Two rotations across two summers</div>
+        <div class="rotations">
+          <div class="rotation">
+            <div class="rot-when">May 2026 - Present</div>
+            <div class="sub">Platform Engineering &amp; DevOps, Architecture Team</div>
+            <ul class="pts">
+              <li>Standardized CI/CD across a <b>100+ system</b> enterprise portfolio, building end-to-end pipelines for <b>80+</b> via reusable GitLab CI templates per app type (React/Angular, Node, Java REST, monoliths).</li>
+              <li>Raised the internal DevOps Adoption score across a 110+ project portfolio <b>from 39 to 75</b>, the top-ranked score among teams maintaining the largest portfolios.</li>
+              <li>Integrated <b>SAST, DAST, and dependency scanning</b> into every pipeline; reverse-engineered each application's codebase, authentication structure (permissions, tokens, protected routes), and dependencies to configure <b>custom scans</b> that run against secured endpoints across many different system types.</li>
+              <li>Automated artifact promotion and <b>deployment to the servers</b> with Jenkins; containerized workloads with Docker and tuned Kubernetes resource allocation per system.</li>
+            </ul>
+          </div>
+          <div class="rotation">
+            <div class="rot-when">Summer 2025</div>
+            <div class="sub">Application Development, IT Sourcing &amp; Supply Management</div>
+            <ul class="pts">
+              <li>Owned an enterprise supplier-feedback product end-to-end on Microsoft Power Platform, replacing manual Outlook tracking and <b>100+ per-supplier Excel workbooks</b> for a 50+ person department, cutting feedback collection from hours to minutes.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="rv" id="projects">
+    <div class="sec-head"><span class="sec-idx">03</span><span class="sec-title">Projects</span><span class="sec-rule"></span></div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="role">Co-founder and Sole Backend Engineer</div>
+        <h3>Pharmacy Quoting &amp; Compliance SaaS</h3>
+        <div class="yr">Feb 2023 - Present</div>
+        <p>Owned the full backend: <b>11 domain modules</b> with a pure, database-free core for exact-Decimal financial math and immutable, version-stamped quote snapshots. A <b>5-layer authorization pipeline</b> (tenant isolation, RBAC with default-deny, state-machine guards, field-level redaction) enforced through one central hook, plus an <b>append-only audit store</b> as the single source of truth.</p>
+        <div class="chips"><span>Python</span><span>Django REST</span><span>PostgreSQL</span><span>Docker</span><span>CI/CD</span><span>2,900 tests</span></div>
+      </div>
+
+      <div class="card">
+        <div class="role">Perception &amp; Systems</div>
+        <h3>Real-Time Robot Perception on SPOT</h3>
+        <div class="yr">2024 - Present</div>
+        <p>A real-time semantic-segmentation perception stack for a <b>Boston Dynamics SPOT</b> quadruped: two deep models sharing a single Jetson Orin Nano GPU. An online <b>Gaussian Process node in GPyTorch (CUDA)</b>, fine-tuned to the live CO2 sensor response, fuses it with SLAM odometry into contaminant maps that return mean and uncertainty for adaptive sampling.</p>
+        <div class="chips"><span>PyTorch</span><span>CUDA / TensorRT</span><span>ROS 2</span><span>C++</span><span>GPyTorch</span><span>SLAM, Nav2</span></div>
+      </div>
+
+      <div class="card">
+        <div class="role">Software Team Lead</div>
+        <h3>Panther Robotics, RL Arm Control</h3>
+        <div class="yr">Aug 2023 - Dec 2024</div>
+        <p>Led a <b>7-member team</b> exploring reinforcement learning for robotic-arm control in simulation, experimenting with different policies across physics engines. A hands-on research and learning project that got the team fluent in RL and robotics simulation.</p>
+        <div class="chips"><span>Keras</span><span>PyBullet</span><span>Isaac Sim</span><span>Reinforcement Learning</span></div>
+      </div>
+
+      <div class="card">
+        <div class="role">Supplier Feedback Platform</div>
+        <h3>Enterprise Product, IT Sourcing</h3>
+        <div class="yr">Summer 2025</div>
+        <p>Owned an enterprise supplier-feedback product end-to-end, replacing manual Outlook tracking and <b>100+ per-supplier Excel workbooks</b> for a 50+ person department, cutting feedback collection from hours to minutes.</p>
+        <div class="chips"><span>Power Platform</span><span>Data Architecture</span><span>Security Review</span></div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- ===== SCENE DIVIDER ===== -->
+<div class="scene">
+  <div class="scene-bg" style="background-image:url('assets/demo-ar-menu.jpg')" aria-hidden="true"></div>
+  <div class="scene-cap">
+    <div class="k">In the field</div>
+    <h3>Real robots, real environments, real-time perception.</h3>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- FIELD DEMOS -->
+  <section class="rv" id="demos">
+    <div class="sec-head"><span class="sec-idx">04</span><span class="sec-title">Field Demos</span><span class="sec-rule"></span></div>
+    <p class="demo-intro">Real-time perception, AR human-robot control, and autonomous exploration on a Boston Dynamics SPOT, captured from live runs in DOE-relevant environments.</p>
+    <figure class="demo-feature">
+      <video controls preload="none" poster="assets/autonomous-poster.jpg" playsinline>
+        <source src="assets/autonomous-demo.mp4" type="video/mp4">
+      </video>
+      <figcaption><b>Autonomous run.</b> Onboard navigation and SLAM mapping (Nav2) while a GPyTorch Gaussian Process predicts the live CO2 contaminant field in real time, streamed to the operator.</figcaption>
+    </figure>
+    <div class="gallery">
+      <figure class="shot">
+        <img src="assets/demo-ar-menu.jpg" alt="Boston Dynamics SPOT robot with a floating augmented-reality command menu in an operator's AR view" loading="lazy">
+        <figcaption><span class="t">AR Human-Robot Control</span><span class="d">Spatial command menu (go-to, calibrate, recall) anchored in the operator's AR view of the robot.</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/demo-gp.jpg" alt="Probabilistic contaminant field estimated by an online Gaussian Process, with an uncertainty boundary" loading="lazy">
+        <figcaption><span class="t">Probabilistic Contaminant Field</span><span class="d">Online Gaussian-Process estimate with uncertainty, fusing gas-sensor readings with SLAM odometry in real time.</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/demo-explore.jpg" alt="Autonomous open-frontier exploration path over a live SLAM map of an unknown environment" loading="lazy">
+        <figcaption><span class="t">Autonomous Exploration</span><span class="d">Open-frontier planning traced over a live SLAM map while mapping an unknown space.</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/demo-ar-control.jpg" alt="First-person AR teleoperation of the SPOT arm using a hand controller with a 6-DoF gizmo" loading="lazy">
+        <figcaption><span class="t">AR Arm Teleoperation</span><span class="d">6-DoF manipulator control through an AR headset and hand controller, overlaid on the live arm.</span></figcaption>
+      </figure>
+    </div>
+    <figure class="demo-feature demo-seg">
+      <img class="seg-img" src="assets/robot-segmentation.jpg" alt="STEGO semantic segmentation showing the input image, cluster predictions, and linear-probe predictions across indoor scenes" loading="lazy">
+      <figcaption><b>Semantic segmentation (STEGO).</b> A self-supervised transformer segments navigation-critical surfaces: input image, cluster predictions, and linear-probe predictions across indoor scenes.</figcaption>
+    </figure>
+    <p class="demo-note">Full video walkthroughs available on request.</p>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="rv" id="research">
+    <div class="sec-head"><span class="sec-idx">05</span><span class="sec-title">Research</span><span class="sec-rule"></span></div>
+    <a class="poster" href="assets/Mercury_Characterization_Poster.pdf" target="_blank" rel="noopener">
+      <div class="poster-img"><img src="assets/poster-thumb.jpg" alt="Research poster: Real-time Mercury Characterization for DOE Legacy Facilities Decommissioning Using Mobile Robotic Platforms" loading="lazy"></div>
+      <div class="poster-body">
+        <div class="role">First-Author Poster (opens full PDF)</div>
+        <h3>Real-Time Mercury Characterization for DOE Legacy Facilities Decommissioning Using Mobile Robotic Platforms</h3>
+        <div class="yr">FIU Undergraduate Research Conference, 2026<br>Applied Research Center, Florida International University</div>
+        <p>First author on DOE-funded research (MSIPP, with Savannah River National Laboratory and Oak Ridge Y-12): an <b>AR-assisted mobile robotic system</b> for real-time environmental characterization in hazardous nuclear-decommissioning sites, using multimodal sensing, real-time SLAM &amp; open-frontier exploration, semantic segmentation, and probabilistic vapor-plume estimation via Gaussian Processes on a Boston Dynamics SPOT.</p>
+        <div class="chips"><span>Boston Dynamics SPOT</span><span>ROS 2, Jetson</span><span>SLAM, Nav2</span><span>Gaussian Processes</span><span>AR / HRI</span></div>
+      </div>
+    </a>
+    <div class="panel">
+      <div class="role">Research Collaborators</div>
+      <h3>ARC / FIU Robotics Team</h3>
+      <div class="yr">Applied Research Center</div>
+      <p>Co-authors: Carlos Quintanilla, Anthony Abrahao, Leonel Lagos. Managed by Savannah River National Laboratory (SRNS Task Order 0000663600), in collaboration with Oak Ridge Y-12.</p>
+    </div>
+  </section>
+
+  <!-- INIT FIU -->
+  <section class="rv" id="init">
+    <div class="sec-head"><span class="sec-idx">06</span><span class="sec-title">INIT FIU</span><span class="sec-rule"></span></div>
+    <p class="init-lead"><b>Robotics Technical Lead and E-Board member</b> at INIT, FIU's student developer community (Jan 2025 to present). I run the robotics track: teaching hands-on workshops, mentoring members, and helping organize ShellHacks.</p>
+
+    <div class="init-workshops">
+      <figure class="portrait">
+        <img src="assets/init-teaching.jpg" alt="Franco Silvestri teaching a hands-on robotics and electronics workshop at INIT FIU" loading="lazy">
+        <figcaption>Teaching a hands-on electronics workshop at INIT</figcaption>
+      </figure>
+      <div class="init-wk-body">
+        <div class="role">Workshops</div>
+        <h3>16+ hands-on robotics &amp; electronics workshops</h3>
+        <p>I led 16+ embedded systems and robotics workshops, bringing students into electronics and coding, many for the very first time. A couple of the projects we built together:</p>
+        <ul class="pts">
+          <li>A <b>Harry Potter themed music player</b> driven by an ultrasonic sensor.</li>
+          <li>A <b>Tic-Tac-Toe AI</b> using a minimax algorithm, with wireless control.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="panel">
+        <div class="role">ShellHacks, Florida's largest hackathon</div>
+        <h3>Co-organizer</h3>
+        <div class="stat-row"><span><b>~1,500</b> attendees</span><span><b>35+</b> sponsors</span><span><b>100</b> recruiters</span><span><b>36+</b> hrs</span></div>
+        <p>I also ran a 3 to 5 AM live build with <b>40+ students</b>: an RGB mood lamp using the Arduino RGB module, remote-controlled with multiple lighting patterns.</p>
+      </div>
+      <div class="panel init-preshellhacks">
+        <div class="role">Pre-ShellHacks Prep Workshop</div>
+        <h3>Intro to Electronics</h3>
+        <img src="assets/init-preshellhacks.jpg" alt="Pre-ShellHacks Intro to Electronics prep workshop banner" loading="lazy">
+        <p>Ran a Pre-ShellHacks prep workshop so students would show up equipped with the tools to compete.</p>
+      </div>
+    </div>
+
+    <div class="embeds">
+      <div class="embed">
+        <div class="label">Watch the workshop series</div>
+        <div class="media-facade yt" data-embed="https://www.youtube.com/embed/videoseries?list=PLjCsef875Bd9xmJ_P9Eua_j_pQCprlSVz&amp;autoplay=1" role="button" tabindex="0" aria-label="Play the YouTube workshop playlist">
+          <div class="mf-play" aria-hidden="true"></div>
+          <div class="mf-cap">16+ workshops, click to play<br><a href="https://www.youtube.com/playlist?list=PLjCsef875Bd9xmJ_P9Eua_j_pQCprlSVz" target="_blank" rel="noopener">or open on YouTube</a></div>
+        </div>
+      </div>
+      <div class="embed">
+        <div class="label">Featured: final-project workshop</div>
+        <div class="li-embed"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7322489533030187008?compact=1" height="399" width="504" frameborder="0" allowfullscreen title="Publicación integrada" loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLBOX -->
+  <section class="rv" id="skills">
+    <div class="sec-head"><span class="sec-idx">07</span><span class="sec-title">Toolbox</span><span class="sec-rule"></span></div>
+    <div class="skillset">
+      <div class="skrow"><div class="cat">Languages</div><div class="items"><span>Python</span><span>C++</span><span>Java</span><span>JavaScript / TypeScript</span><span>SQL</span></div></div>
+      <div class="skrow"><div class="cat">Systems &amp; Backend</div><div class="items"><span>Distributed Systems</span><span>Real-Time Systems</span><span>Networking</span><span>ROS 2</span><span>DDS Middleware</span><span>Django REST</span><span>PostgreSQL</span></div></div>
+      <div class="skrow"><div class="cat">Infra &amp; DevOps</div><div class="items"><span>Docker</span><span>Kubernetes</span><span>GitLab CI</span><span>Jenkins</span><span>Linux</span><span>AWS</span></div></div>
+      <div class="skrow"><div class="cat">ML &amp; Perception</div><div class="items"><span>PyTorch</span><span>GPyTorch</span><span>CUDA</span><span>TensorRT</span><span>Jetson</span><span>Semantic Segmentation</span><span>STEGO</span><span>SLAM, Nav2</span><span>Sensor Fusion</span><span>Gaussian Processes</span></div></div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===== CONTACT (credits) ===== -->
+<footer id="contact">
+  <div class="credits-kicker">Next chapter</div>
+  <div class="big">The next build starts here<br><a href="mailto:fransilvestri02@gmail.com">fransilvestri02@gmail.com</a></div>
+  <div class="links">
+    <a class="btn btn-p" href="Franco_Silvestri_Resume.pdf">Resume (PDF)</a>
+    <a class="btn btn-s" href="https://www.linkedin.com/in/franco-silvestri-98022b212/" target="_blank" rel="noopener"><svg class="li-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+    <a class="btn btn-s" href="tel:+17868235805">+1 (786) 823-5805</a>
+  </div>
+  <div class="foot-note">Franco Silvestri. Built &amp; deployed on GitHub Pages. Miami, FL.</div>
+</footer>
+
+<!-- certificate lightbox -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="lb-close" aria-label="Close">&times;</button>
+  <img class="lb-img" src="" alt="Certificate, full view">
+  <a class="lb-pdf" href="" target="_blank" rel="noopener">Open original (PDF)</a>
+</div>
+
+<script>
+  // reveal on scroll
+  (function(){
+    if(!('IntersectionObserver' in window)){ document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in');}); return; }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.12});
+    document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+    // count-up on the stat tiles
+    function animateCount(el){
+      var target=parseFloat(el.getAttribute('data-count')), suffix=el.getAttribute('data-suffix')||'', dur=1100, start=performance.now();
+      function tick(now){ var p=Math.min((now-start)/dur,1), eased=1-Math.pow(1-p,3);
+        el.textContent=Math.round(target*eased).toLocaleString()+suffix; if(p<1) requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    }
+    var seen=false;
+    var tio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && !seen){ seen=true; document.querySelectorAll('.stat .num').forEach(animateCount); } }); },{threshold:.3});
+    var tele=document.querySelector('.telemetry'); if(tele) tio.observe(tele);
+  })();
+
+  // scroll progress + nav scrollspy
+  (function(){
+    var bar=document.getElementById('progress');
+    var links=Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+    var map={}; links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+    var ticking=false;
+    function onScroll(){ if(ticking) return; ticking=true;
+      requestAnimationFrame(function(){ var h=document.documentElement, max=h.scrollHeight-h.clientHeight;
+        if(bar) bar.style.width=(max>0?(h.scrollTop/max)*100:0)+'%'; ticking=false; }); }
+    window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+    var spy=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(a){a.classList.remove('active');}); if(map[e.target.id]) map[e.target.id].classList.add('active'); } });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    document.querySelectorAll('section[id]').forEach(function(s){spy.observe(s);});
+    var initEl=document.getElementById('init'); if(initEl && map['init']) spy.observe(initEl);
+  })();
+
+  // certificate lightbox
+  (function(){
+    var lb=document.getElementById('lightbox'); if(!lb) return;
+    var img=lb.querySelector('.lb-img'), pdf=lb.querySelector('.lb-pdf');
+    function open(full,href){ img.src=full; if(href){pdf.href=href;pdf.style.display='';}else{pdf.style.display='none';}
+      lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); }
+    function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); img.src=''; }
+    document.querySelectorAll('.cert-thumb').forEach(function(b){
+      b.addEventListener('click',function(){ open(b.getAttribute('data-full'), b.getAttribute('data-pdf')); }); });
+    lb.addEventListener('click',function(e){ if(e.target===lb || e.target.classList.contains('lb-close')) close(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+  })();
+
+  // subtle parallax on scene backgrounds
+  (function(){
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var scenes=Array.prototype.slice.call(document.querySelectorAll('.scene-bg'));
+    if(!scenes.length) return;
+    var ticking=false;
+    function upd(){ ticking=false; scenes.forEach(function(el){
+      var r=el.parentElement.getBoundingClientRect(); var off=(r.top+r.height/2 - window.innerHeight/2)*-0.08;
+      el.style.transform='translateY('+off.toFixed(1)+'px)'; }); }
+    window.addEventListener('scroll',function(){ if(!ticking){ticking=true;requestAnimationFrame(upd);} },{passive:true});
+    upd();
+  })();
+
+  // click-to-load media facades (YouTube + LinkedIn)
+  (function(){
+    document.querySelectorAll('.media-facade').forEach(function(f){
+      function load(){
+        var src=f.getAttribute('data-embed');
+        var ifr=document.createElement('iframe');
+        ifr.setAttribute('src',src);
+        ifr.setAttribute('title', f.getAttribute('aria-label')||'Embedded media');
+        ifr.setAttribute('frameborder','0');
+        ifr.setAttribute('allowfullscreen','');
+        if(f.classList.contains('yt')){
+          ifr.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+          ifr.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+        }
+        f.classList.add('loaded'); f.innerHTML=''; f.appendChild(ifr);
+      }
+      f.addEventListener('click',function(e){ if(e.target.tagName==='A') return; load(); });
+      f.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); load(); } });
+    });
+  })();
+</script>
+</body>
+</html>
