@@ -242,18 +242,18 @@
   .init-wk-body .role{font-family:var(--mono);font-size:11px;letter-spacing:.09em;color:var(--accent);text-transform:uppercase}
   .init-wk-body h3{font-size:19px;font-weight:650;margin:10px 0 8px;letter-spacing:-.01em}
   .init-wk-body p{font-size:14.5px;color:#c3c0b8;max-width:640px}
-  .sh-stats{display:grid;grid-template-columns:1fr 1fr;gap:26px 22px;margin:20px 0 6px}
-  .sh-stats .n{font-family:var(--mono);font-size:33px;font-weight:700;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
-  .sh-stats .l{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:7px}
-  .init-preshellhacks{display:flex;flex-direction:column}
-  .flyer-wrap{flex:1;min-height:150px;position:relative;overflow:hidden;border:1px solid var(--hair);border-radius:6px;margin:12px 0 0}
-  .flyer-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+  .sh-stats{display:flex;flex-wrap:wrap;gap:16px 46px;margin:18px 0 4px}
+  .sh-stats .n{font-family:var(--mono);font-size:34px;font-weight:700;color:var(--accent);line-height:1;font-variant-numeric:tabular-nums}
+  .sh-stats .l{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:6px}
+  .preshell-feature{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:center;margin-top:18px}
+  .preshell-feature img{width:100%;display:block;border:1px solid var(--hair);border-radius:8px}
+  @media(max-width:720px){.preshell-feature{grid-template-columns:1fr}}
   .embeds{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
   @media(max-width:720px){.embeds{grid-template-columns:1fr}}
-  .embed{border:1px solid var(--hair);border-radius:8px;overflow:hidden;background:var(--surface)}
+  .embed{border:1px solid var(--hair);border-radius:8px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column}
   .embed .label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--accent-soft);text-transform:uppercase;padding:12px 14px;border-bottom:1px solid var(--hair)}
   .media-facade{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer;text-align:center;padding:16px;background:#0a0b0e radial-gradient(circle at 50% 42%,rgba(255,157,71,.14),transparent 62%)}
-  .media-facade.yt{aspect-ratio:16/9}
+  .media-facade.yt{flex:1;min-height:280px}
   .media-facade.li{min-height:340px}
   .media-facade.loaded{cursor:default;padding:0;gap:0;background:#000}
   .media-facade.li.loaded{background:#fff}
@@ -527,23 +527,23 @@
       </div>
     </div>
 
-    <div class="split">
-      <div class="panel">
-        <div class="role">ShellHacks, Florida's largest hackathon</div>
-        <h3>Co-organizer</h3>
-        <div class="sh-stats">
-          <div><div class="n">~1,500</div><div class="l">Attendees</div></div>
-          <div><div class="n">35+</div><div class="l">Sponsors</div></div>
-          <div><div class="n">100</div><div class="l">Recruiters</div></div>
-          <div><div class="n">36+</div><div class="l">Hours</div></div>
-        </div>
-        <p>I also ran a 3 to 5 AM live build with <b>40+ students</b>: an RGB mood lamp using the Arduino RGB module, remote-controlled with multiple lighting patterns.</p>
+    <div class="panel">
+      <div class="role">ShellHacks, Florida's largest hackathon</div>
+      <h3>Co-organizer</h3>
+      <div class="sh-stats">
+        <div><div class="n">~1,500</div><div class="l">Attendees</div></div>
+        <div><div class="n">35+</div><div class="l">Sponsors</div></div>
+        <div><div class="n">100</div><div class="l">Recruiters</div></div>
+        <div><div class="n">36+</div><div class="l">Hours</div></div>
       </div>
-      <div class="panel init-preshellhacks">
+      <p>I also ran a 3 to 5 AM live build with <b>40+ students</b>: an RGB mood lamp using the Arduino RGB module, remote-controlled with multiple lighting patterns.</p>
+    </div>
+    <div class="panel preshell-feature">
+      <img src="assets/init-preshellhacks.jpg" alt="Pre-ShellHacks Intro to Electronics workshop flyer, with Franco helping a student build electronics" loading="lazy">
+      <div>
         <div class="role">Pre-ShellHacks Prep Workshop</div>
         <h3>Intro to Electronics</h3>
-        <p>Ran a Pre-ShellHacks prep workshop so students would show up equipped with the tools to compete.</p>
-        <div class="flyer-wrap"><img src="assets/init-preshellhacks.jpg" alt="Pre-ShellHacks Intro to Electronics prep workshop banner" loading="lazy"></div>
+        <p>Ran a Pre-ShellHacks prep workshop so students would show up equipped with the tools to compete. A quick hands-on primer so first-timers walked in ready to build.</p>
       </div>
     </div>
 
