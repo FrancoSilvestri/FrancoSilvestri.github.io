@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Franco Silvestri, Systems &amp; Backend Engineer</title>
 <meta name="description" content="Franco Silvestri is a systems, backend, and robotics engineer working on real-time perception, distributed systems, and enterprise platform engineering.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1116'/%3E%3Crect x='22' y='16' width='7' height='33' fill='%23eceae3'/%3E%3Crect x='22' y='16' width='20' height='7' fill='%23eceae3'/%3E%3Crect x='22' y='28' width='15' height='6' fill='%23eceae3'/%3E%3Ccircle cx='44' cy='45' r='4' fill='%23ff9d47'/%3E%3C/svg%3E">
 <style>
   :root{
     --bg:#0b0c0f;
@@ -244,6 +245,9 @@
   .stat-row{display:flex;flex-wrap:wrap;gap:18px;margin:14px 0 2px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
   .stat-row b{color:var(--accent);font-size:16px;font-variant-numeric:tabular-nums}
   .init-preshellhacks img{width:100%;border:1px solid var(--hair);border-radius:6px;margin:12px 0 2px;display:block}
+  .init-shellhacks{display:flex;flex-direction:column}
+  .sh-logo{margin-top:auto;padding-top:24px}
+  .sh-logo img{display:block;width:158px;max-width:56%;margin:0 auto;border-radius:12px;border:1px solid var(--hair)}
   .embeds{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
   @media(max-width:720px){.embeds{grid-template-columns:1fr}}
   .embed{border:1px solid var(--hair);border-radius:8px;overflow:hidden;background:var(--surface)}
@@ -310,12 +314,12 @@
   <div class="nav-in">
     <div class="brand">FRANCO<b>.</b>SILVESTRI</div>
     <div class="nav-links">
-      <a href="#journey">journey</a>
       <a href="#work">work</a>
       <a href="#projects">projects</a>
       <a href="#demos">demos</a>
       <a href="#research">research</a>
       <a href="#init">init</a>
+      <a href="#journey">journey</a>
       <a href="#contact">contact</a>
     </div>
   </div>
@@ -349,10 +353,10 @@
       <span class="tag"><span class="k">LANGS</span> Python, C++, Java, JS/TS</span>
     </div>
     <div class="telemetry">
-      <div class="stat"><div class="num" data-count="22" data-suffix="×">0×</div><div class="lbl">Inference latency<br>reduction</div></div>
-      <div class="stat"><div class="num" data-count="2900" data-suffix="">0</div><div class="lbl">Automated tests<br>on the SaaS</div></div>
-      <div class="stat"><div class="num" data-count="100" data-suffix="+">0</div><div class="lbl">Enterprise systems<br>on CI/CD</div></div>
-      <div class="stat"><div class="num" data-count="16" data-suffix="+">0</div><div class="lbl">Robotics workshops<br>led &amp; taught</div></div>
+      <div class="stat"><div class="num" data-count="22" data-suffix="×">22×</div><div class="lbl">Inference latency<br>reduction</div></div>
+      <div class="stat"><div class="num" data-count="2900" data-suffix="">2,900</div><div class="lbl">Automated tests<br>on the SaaS</div></div>
+      <div class="stat"><div class="num" data-count="100" data-suffix="+">100+</div><div class="lbl">Enterprise systems<br>on CI/CD</div></div>
+      <div class="stat"><div class="num" data-count="16" data-suffix="+">16+</div><div class="lbl">Robotics workshops<br>led &amp; taught</div></div>
     </div>
   </div>
 
@@ -363,10 +367,201 @@
     <p>I work across the stack, from <b>C++ on robots</b> to <b>Python backends</b> to <b>Kubernetes in production</b>, and I care about systems that hold up after the demo is over. Most days you'll find me in the Applied Research Center lab, teaching a quadruped to understand the world a little better.</p>
   </section>
 
+  <!-- EXPERIENCE -->
+  <section class="rv" id="work">
+    <div class="sec-head"><span class="sec-idx">01</span><span class="sec-title">Experience</span><span class="sec-rule"></span></div>
+
+    <div class="entry">
+      <div class="when">Jan 2024 - Present<span class="loc">FIU Applied Research Center<br>Miami, FL, USA</span></div>
+      <div>
+        <h3>Robotics Research Assistant, Perception &amp; Systems Lead</h3>
+        <div class="org">DOE MSIPP, with Savannah River National Lab &amp; Oak Ridge Y-12</div>
+        <ul class="pts">
+          <li>Cut real-time inference latency <b>22×</b> over an unoptimized PyTorch GPU baseline (CUDA, quantization, TensorRT) for a DeepLabV3+/STEGO segmentation pipeline that <b>achieved a maximum of 72% mIoU</b>, deployed onboard for real-time field demonstrations alongside a Gaussian Process model on <b>one Jetson Orin Nano</b>.</li>
+          <li>Designed a <b>sensor-agnostic ROS 2 node architecture</b> so new sensors integrate without touching downstream navigation, mapping, or visualization, then deployed across multiple robotic platforms.</li>
+          <li>Built <b>distributed ROS 2 components</b> in C++/Python and <b>designed the robot's networking infrastructure from scratch</b> (IP addressing, low-level Linux, DDS tuning, traffic prioritization), owning bottleneck analysis across the sensor-to-inference-to-operator path to hold real-time latency under load.</li>
+          <li>Built an online <b>Gaussian Process node in GPyTorch</b> (CUDA), fine-tuned to the live CO2 sensor response; exposes feed and predict ROS 2 services that return mean and uncertainty for adaptive sampling, running concurrently with the segmentation model on the Jetson.</li>
+          <li>Fused Velodyne lidar with six depth cameras into a unified point cloud; implemented SLAM with Nav2 planning and open-frontier exploration of unknown environments.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="when">Summers 2025 &amp; 2026<span class="loc">Genworth Financial<br>Richmond, VA, USA</span></div>
+      <div>
+        <h3>IT Development Program, Returning Intern</h3>
+        <div class="org">Two rotations across two summers</div>
+        <div class="rotations">
+          <div class="rotation">
+            <div class="rot-when">May 2026 - Present</div>
+            <div class="sub">Platform Engineering &amp; DevOps, Architecture Team</div>
+            <ul class="pts">
+              <li>Standardized CI/CD across a <b>100+ system</b> enterprise portfolio, building end-to-end pipelines for <b>80+</b> via reusable GitLab CI templates per app type (React/Angular, Node, Java REST, monoliths).</li>
+              <li>Raised the internal DevOps Adoption score across a 110+ project portfolio <b>from 39 to 75</b>, the top-ranked score among teams maintaining the largest portfolios.</li>
+              <li>Integrated <b>SAST, DAST, and dependency scanning</b> into every pipeline; reverse-engineered each application's codebase, authentication structure (permissions, tokens, protected routes), and dependencies to configure <b>custom scans</b> that run against secured endpoints across many different system types.</li>
+              <li>Automated artifact promotion and <b>deployment to the servers</b> with Jenkins; containerized workloads with Docker and tuned Kubernetes resource allocation per system.</li>
+            </ul>
+          </div>
+          <div class="rotation">
+            <div class="rot-when">Summer 2025</div>
+            <div class="sub">Application Development, IT Sourcing &amp; Supply Management</div>
+            <ul class="pts">
+              <li>Owned an enterprise supplier-feedback product end-to-end on Microsoft Power Platform, replacing manual Outlook tracking and <b>100+ per-supplier Excel workbooks</b> for a 50+ person department, cutting feedback collection from hours to minutes.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="rv" id="projects">
+    <div class="sec-head"><span class="sec-idx">02</span><span class="sec-title">Projects</span><span class="sec-rule"></span></div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="role">Co-founder and Sole Backend Engineer</div>
+        <h3>Pharmacy Quoting &amp; Compliance SaaS</h3>
+        <div class="yr">Feb 2023 - Present</div>
+        <p>Owned the full backend: <b>11 domain modules</b> with a pure, database-free core for exact-Decimal financial math and immutable, version-stamped quote snapshots. A <b>5-layer authorization pipeline</b> (tenant isolation, RBAC with default-deny, state-machine guards, field-level redaction) enforced through one central hook, plus an <b>append-only audit store</b> as the single source of truth.</p>
+        <div class="chips"><span>Python</span><span>Django REST</span><span>PostgreSQL</span><span>Docker</span><span>CI/CD</span><span>2,900 tests</span></div>
+      </div>
+
+      <div class="card">
+        <div class="role">Software Team Lead</div>
+        <h3>Panther Robotics, RL Arm Control</h3>
+        <div class="yr">Aug 2023 - Dec 2024</div>
+        <p>Led a <b>7-member team</b> exploring reinforcement learning for robotic-arm control in simulation, experimenting with different policies across physics engines. A hands-on research and learning project that got the team fluent in RL and robotics simulation.</p>
+        <div class="chips"><span>Keras</span><span>PyBullet</span><span>Isaac Sim</span><span>Reinforcement Learning</span></div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- ===== SCENE DIVIDER ===== -->
+<div class="scene">
+  <div class="scene-bg" style="background-image:url('assets/demo-ar-menu.jpg')" aria-hidden="true"></div>
+  <div class="scene-cap">
+    <div class="k">In the field</div>
+    <h3>Real robots, real environments, real-time perception.</h3>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- FIELD DEMOS -->
+  <section class="rv" id="demos">
+    <div class="sec-head"><span class="sec-idx">03</span><span class="sec-title">Field Demos</span><span class="sec-rule"></span></div>
+    <p class="demo-intro">Real-time perception, AR human-robot control, and autonomous exploration on a Boston Dynamics SPOT, captured from live runs in DOE-relevant environments.</p>
+    <figure class="demo-feature">
+      <video controls preload="none" poster="assets/autonomous-poster.jpg" playsinline>
+        <source src="assets/autonomous-demo.mp4" type="video/mp4">
+      </video>
+      <figcaption><b>Autonomous run.</b> Onboard navigation and SLAM mapping (Nav2) while a GPyTorch Gaussian Process predicts the live CO2 contaminant field in real time, streamed to the operator.</figcaption>
+    </figure>
+    <div class="gallery">
+      <figure class="shot">
+        <img src="assets/demo-ar-menu.jpg" alt="Boston Dynamics SPOT robot with a floating augmented-reality command menu in an operator's AR view" loading="lazy">
+        <figcaption><span class="t">AR Human-Robot Control</span><span class="d">Spatial command menu (go-to, calibrate, recall) anchored in the operator's AR view of the robot.</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/demo-gp.jpg" alt="Probabilistic contaminant field estimated by an online Gaussian Process, with an uncertainty boundary" loading="lazy">
+        <figcaption><span class="t">Probabilistic Contaminant Field</span><span class="d">Online Gaussian-Process estimate with uncertainty, fusing gas-sensor readings with SLAM odometry in real time.</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/demo-explore.jpg" alt="Autonomous open-frontier exploration path over a live SLAM map of an unknown environment" loading="lazy">
+        <figcaption><span class="t">Autonomous Exploration</span><span class="d">Open-frontier planning traced over a live SLAM map while mapping an unknown space.</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/demo-ar-control.jpg" alt="First-person AR teleoperation of the SPOT arm using a hand controller with a 6-DoF gizmo" loading="lazy">
+        <figcaption><span class="t">AR Arm Teleoperation</span><span class="d">6-DoF manipulator control through an AR headset and hand controller, overlaid on the live arm.</span></figcaption>
+      </figure>
+    </div>
+    <figure class="demo-feature demo-seg">
+      <img class="seg-img" src="assets/robot-segmentation.jpg" alt="STEGO semantic segmentation showing the input image, cluster predictions, and linear-probe predictions across indoor scenes" loading="lazy">
+      <figcaption><b>Semantic segmentation (STEGO).</b> A self-supervised transformer segments navigation-critical surfaces: input image, cluster predictions, and linear-probe predictions across indoor scenes.</figcaption>
+    </figure>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="rv" id="research">
+    <div class="sec-head"><span class="sec-idx">04</span><span class="sec-title">Research</span><span class="sec-rule"></span></div>
+    <a class="poster" href="assets/Mercury_Characterization_Poster.pdf" target="_blank" rel="noopener">
+      <div class="poster-img"><img src="assets/poster-thumb.jpg" alt="Research poster: Real-time Mercury Characterization for DOE Legacy Facilities Decommissioning Using Mobile Robotic Platforms" loading="lazy"></div>
+      <div class="poster-body">
+        <div class="role">First-Author Poster (opens full PDF)</div>
+        <h3>Real-Time Mercury Characterization for DOE Legacy Facilities Decommissioning Using Mobile Robotic Platforms</h3>
+        <div class="yr">FIU Undergraduate Research Conference, 2026<br>Applied Research Center, Florida International University</div>
+        <p>First author on DOE-funded research (MSIPP, with Savannah River National Laboratory and Oak Ridge Y-12): an <b>AR-assisted mobile robotic system</b> for real-time environmental characterization in hazardous nuclear-decommissioning sites, using multimodal sensing, real-time SLAM &amp; open-frontier exploration, semantic segmentation, and probabilistic vapor-plume estimation via Gaussian Processes on a Boston Dynamics SPOT.</p>
+        <div class="chips"><span>Boston Dynamics SPOT</span><span>ROS 2, Jetson</span><span>SLAM, Nav2</span><span>Gaussian Processes</span><span>AR / HRI</span></div>
+      </div>
+    </a>
+    <div class="panel">
+      <div class="role">Research Collaborators</div>
+      <h3>ARC / FIU Robotics Team</h3>
+      <div class="yr">Applied Research Center</div>
+      <p>Co-authors: Carlos Quintanilla, Anthony Abrahao, Leonel Lagos. Managed by Savannah River National Laboratory (SRNS Task Order 0000663600), in collaboration with Oak Ridge Y-12.</p>
+    </div>
+  </section>
+
+  <!-- INIT FIU -->
+  <section class="rv" id="init">
+    <div class="sec-head"><span class="sec-idx">05</span><span class="sec-title">INIT FIU</span><span class="sec-rule"></span></div>
+    <p class="init-lead"><b>Robotics Technical Lead and E-Board member</b> at INIT, FIU's student developer community (Jan 2025 to present). I run the robotics track: teaching hands-on workshops, mentoring members, and helping organize ShellHacks.</p>
+
+    <div class="init-workshops">
+      <figure class="portrait">
+        <img src="assets/init-teaching.jpg" alt="Franco Silvestri teaching a hands-on robotics and electronics workshop at INIT FIU" loading="lazy">
+        <figcaption>Teaching a hands-on electronics workshop at INIT</figcaption>
+      </figure>
+      <div class="init-wk-body">
+        <div class="role">Workshops</div>
+        <h3>16+ hands-on robotics &amp; electronics workshops</h3>
+        <p>I led 16+ embedded systems and robotics workshops, bringing students into electronics and coding, many for the very first time. A couple of the projects we built together:</p>
+        <ul class="pts">
+          <li>A <b>Harry Potter themed music player</b> driven by an ultrasonic sensor.</li>
+          <li>A <b>Tic-Tac-Toe AI</b> using a minimax algorithm, with wireless control.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="panel init-shellhacks">
+        <div class="role">ShellHacks, Florida's largest hackathon</div>
+        <h3>Co-organizer</h3>
+        <div class="stat-row"><span><b>~1,500</b> attendees</span><span><b>35+</b> sponsors</span><span><b>100</b> recruiters</span><span><b>36+</b> hrs</span></div>
+        <p>I also ran a 3 to 5 AM live build with <b>40+ students</b>: an RGB mood lamp using the Arduino RGB module, remote-controlled with multiple lighting patterns.</p>
+        <div class="sh-logo"><img src="assets/init-logo.png" alt="INIT FIU, the student developer community" loading="lazy"></div>
+      </div>
+      <div class="panel init-preshellhacks">
+        <div class="role">Pre-ShellHacks Prep Workshop</div>
+        <h3>Intro to Electronics</h3>
+        <img src="assets/init-preshellhacks.jpg" alt="Pre-ShellHacks Intro to Electronics prep workshop banner" loading="lazy">
+        <p>Ran a Pre-ShellHacks prep workshop so students would show up equipped with the tools to compete.</p>
+      </div>
+    </div>
+
+    <div class="embeds">
+      <div class="embed">
+        <div class="label">Watch the workshop series</div>
+        <div class="media-facade yt" data-embed="https://www.youtube.com/embed/videoseries?list=PLjCsef875Bd9xmJ_P9Eua_j_pQCprlSVz&amp;autoplay=1" role="button" tabindex="0" aria-label="Play the YouTube workshop playlist">
+          <div class="mf-play" aria-hidden="true"></div>
+          <div class="mf-cap">16+ workshops, click to play<br><a href="https://www.youtube.com/playlist?list=PLjCsef875Bd9xmJ_P9Eua_j_pQCprlSVz" target="_blank" rel="noopener">or open on YouTube</a></div>
+        </div>
+      </div>
+      <div class="embed">
+        <div class="label">Featured: final-project workshop</div>
+        <div class="li-embed"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7322489533030187008?compact=1" height="399" width="504" frameborder="0" allowfullscreen title="Publicación integrada" loading="lazy"></iframe></div>
+      </div>
+    </div>
+  </section>
+
   <!-- THE JOURNEY -->
   <section class="rv" id="journey">
-    <div class="sec-head"><span class="sec-idx">01</span><span class="sec-title">The Journey</span><span class="sec-rule"></span></div>
-    <p class="journey-intro">An early journey, filled with passion. It started years before college, and it <b>has not slowed down since</b>.</p>
+    <div class="sec-head"><span class="sec-idx">06</span><span class="sec-title">The Journey</span><span class="sec-rule"></span></div>
+    <p class="journey-intro">It started years before college and <b>hasn't slowed down since</b>: self-taught code, first hardware, first real systems.</p>
     <div class="timeline rv">
       <div class="tl-line" aria-hidden="true"></div>
 
@@ -375,11 +570,11 @@
         <div class="tl-card">
           <div class="tl-year">2020</div>
           <h3>First lines of code, self-taught</h3>
-          <p>Before college, I taught myself to build. Online diplomas from <b>UTN Buenos Aires</b> in Python (225 hours, graded Excelente), Django, and Machine Learning with Python, plus my first freelance work.</p>
+          <p>Before college, I taught myself to build. Online university diplomas in Python (225 hours, top marks), Django, and Machine Learning with Python, plus my first freelance work.</p>
           <div class="certs">
-            <button class="cert-thumb" data-full="assets/certs/cert-python.jpg" data-pdf="assets/certs/cert-python.pdf" aria-label="View Python diploma"><img src="assets/certs/cert-python.jpg" alt="Diploma in Python, UTN Buenos Aires" loading="lazy"><div class="cert-cap">Python diploma</div></button>
-            <button class="cert-thumb" data-full="assets/certs/cert-django.jpg" data-pdf="assets/certs/cert-django.pdf" aria-label="View Django certificate"><img src="assets/certs/cert-django.jpg" alt="Django certificate, UTN Buenos Aires" loading="lazy"><div class="cert-cap">Django</div></button>
-            <button class="cert-thumb" data-full="assets/certs/cert-ml.jpg" data-pdf="assets/certs/cert-ml.pdf" aria-label="View Machine Learning certificate"><img src="assets/certs/cert-ml.jpg" alt="Machine Learning with Python certificate, UTN Buenos Aires" loading="lazy"><div class="cert-cap">ML with Python</div></button>
+            <button class="cert-thumb" data-full="assets/certs/cert-python.jpg" data-pdf="assets/certs/cert-python.pdf" aria-label="View Python diploma"><img src="assets/certs/cert-python.jpg" alt="Diploma in Python" loading="lazy"><div class="cert-cap">Python diploma</div></button>
+            <button class="cert-thumb" data-full="assets/certs/cert-django.jpg" data-pdf="assets/certs/cert-django.pdf" aria-label="View Django certificate"><img src="assets/certs/cert-django.jpg" alt="Django certificate" loading="lazy"><div class="cert-cap">Django</div></button>
+            <button class="cert-thumb" data-full="assets/certs/cert-ml.jpg" data-pdf="assets/certs/cert-ml.pdf" aria-label="View Machine Learning certificate"><img src="assets/certs/cert-ml.jpg" alt="Machine Learning with Python certificate" loading="lazy"><div class="cert-cap">ML with Python</div></button>
           </div>
         </div>
       </div>
@@ -388,10 +583,10 @@
         <div class="tl-dot"></div>
         <div class="tl-card">
           <div class="tl-year">2021</div>
-          <h3>First steps in robotics, in Argentina</h3>
-          <p>Joined the <b>Roboteam Experiencia STEM</b> program (IEEE WIE Argentina): my first hands-on steps in mechatronics with Arduino. This is where the passion for robots really started.</p>
+          <h3>First steps in robotics</h3>
+          <p>Joined a hands-on STEM robotics program (<b>Roboteam</b>): my first steps in mechatronics with Arduino. This is where the passion for robots really started.</p>
           <div class="certs">
-            <button class="cert-thumb" data-full="assets/certs/cert-roboteam.jpg" data-pdf="assets/certs/cert-roboteam.pdf" aria-label="View Roboteam certificate"><img src="assets/certs/cert-roboteam.jpg" alt="Roboteam Experiencia STEM participation certificate" loading="lazy"><div class="cert-cap">Roboteam STEM</div></button>
+            <button class="cert-thumb" data-full="assets/certs/cert-roboteam.jpg" data-pdf="assets/certs/cert-roboteam.pdf" aria-label="View Roboteam certificate"><img src="assets/certs/cert-roboteam.jpg" alt="Roboteam STEM participation certificate" loading="lazy"><div class="cert-cap">Roboteam STEM</div></button>
           </div>
         </div>
       </div>
@@ -444,213 +639,6 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section class="rv" id="work">
-    <div class="sec-head"><span class="sec-idx">02</span><span class="sec-title">Experience</span><span class="sec-rule"></span></div>
-
-    <div class="entry">
-      <div class="when">Jan 2024 - Present<span class="loc">FIU Applied Research Center<br>Miami, FL, USA</span></div>
-      <div>
-        <h3>Robotics Research Assistant, Perception &amp; Systems Lead</h3>
-        <div class="org">DOE MSIPP, with Savannah River National Lab &amp; Oak Ridge Y-12</div>
-        <ul class="pts">
-          <li>Cut real-time inference latency <b>22×</b> over an unoptimized PyTorch GPU baseline (CUDA, quantization, TensorRT) for a DeepLabV3+/STEGO segmentation pipeline that <b>achieved a maximum of 72% mIoU</b>, running in production alongside a Gaussian Process model on <b>one Jetson Orin Nano</b>.</li>
-          <li>Designed a <b>sensor-agnostic ROS 2 node architecture</b> so new sensors integrate without touching downstream navigation, mapping, or visualization, then deployed across multiple robotic platforms.</li>
-          <li>Built <b>distributed ROS 2 components</b> in C++/Python and <b>designed the robot's networking infrastructure from scratch</b> (IP addressing, low-level Linux, DDS tuning, traffic prioritization), owning bottleneck analysis across the sensor-to-inference-to-operator path to hold real-time latency under load.</li>
-          <li>Built an online <b>Gaussian Process node in GPyTorch</b> (CUDA), fine-tuned to the live CO2 sensor response; exposes feed and predict ROS 2 services that return mean and uncertainty for adaptive sampling, running concurrently with the segmentation model on the Jetson.</li>
-          <li>Fused Velodyne lidar with six depth cameras into a unified point cloud; implemented SLAM with Nav2 planning and open-frontier exploration of unknown environments.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="entry">
-      <div class="when">Summers 2025 &amp; 2026<span class="loc">Genworth Financial<br>Richmond, VA, USA</span></div>
-      <div>
-        <h3>IT Development Program, Returning Intern</h3>
-        <div class="org">Two rotations across two summers</div>
-        <div class="rotations">
-          <div class="rotation">
-            <div class="rot-when">May 2026 - Present</div>
-            <div class="sub">Platform Engineering &amp; DevOps, Architecture Team</div>
-            <ul class="pts">
-              <li>Standardized CI/CD across a <b>100+ system</b> enterprise portfolio, building end-to-end pipelines for <b>80+</b> via reusable GitLab CI templates per app type (React/Angular, Node, Java REST, monoliths).</li>
-              <li>Raised the internal DevOps Adoption score across a 110+ project portfolio <b>from 39 to 75</b>, the top-ranked score among teams maintaining the largest portfolios.</li>
-              <li>Integrated <b>SAST, DAST, and dependency scanning</b> into every pipeline; reverse-engineered each application's codebase, authentication structure (permissions, tokens, protected routes), and dependencies to configure <b>custom scans</b> that run against secured endpoints across many different system types.</li>
-              <li>Automated artifact promotion and <b>deployment to the servers</b> with Jenkins; containerized workloads with Docker and tuned Kubernetes resource allocation per system.</li>
-            </ul>
-          </div>
-          <div class="rotation">
-            <div class="rot-when">Summer 2025</div>
-            <div class="sub">Application Development, IT Sourcing &amp; Supply Management</div>
-            <ul class="pts">
-              <li>Owned an enterprise supplier-feedback product end-to-end on Microsoft Power Platform, replacing manual Outlook tracking and <b>100+ per-supplier Excel workbooks</b> for a 50+ person department, cutting feedback collection from hours to minutes.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="rv" id="projects">
-    <div class="sec-head"><span class="sec-idx">03</span><span class="sec-title">Projects</span><span class="sec-rule"></span></div>
-    <div class="grid">
-
-      <div class="card">
-        <div class="role">Co-founder and Sole Backend Engineer</div>
-        <h3>Pharmacy Quoting &amp; Compliance SaaS</h3>
-        <div class="yr">Feb 2023 - Present</div>
-        <p>Owned the full backend: <b>11 domain modules</b> with a pure, database-free core for exact-Decimal financial math and immutable, version-stamped quote snapshots. A <b>5-layer authorization pipeline</b> (tenant isolation, RBAC with default-deny, state-machine guards, field-level redaction) enforced through one central hook, plus an <b>append-only audit store</b> as the single source of truth.</p>
-        <div class="chips"><span>Python</span><span>Django REST</span><span>PostgreSQL</span><span>Docker</span><span>CI/CD</span><span>2,900 tests</span></div>
-      </div>
-
-      <div class="card">
-        <div class="role">Perception &amp; Systems</div>
-        <h3>Real-Time Robot Perception on SPOT</h3>
-        <div class="yr">2024 - Present</div>
-        <p>A real-time semantic-segmentation perception stack for a <b>Boston Dynamics SPOT</b> quadruped: two deep models sharing a single Jetson Orin Nano GPU. An online <b>Gaussian Process node in GPyTorch (CUDA)</b>, fine-tuned to the live CO2 sensor response, fuses it with SLAM odometry into contaminant maps that return mean and uncertainty for adaptive sampling.</p>
-        <div class="chips"><span>PyTorch</span><span>CUDA / TensorRT</span><span>ROS 2</span><span>C++</span><span>GPyTorch</span><span>SLAM, Nav2</span></div>
-      </div>
-
-      <div class="card">
-        <div class="role">Software Team Lead</div>
-        <h3>Panther Robotics, RL Arm Control</h3>
-        <div class="yr">Aug 2023 - Dec 2024</div>
-        <p>Led a <b>7-member team</b> exploring reinforcement learning for robotic-arm control in simulation, experimenting with different policies across physics engines. A hands-on research and learning project that got the team fluent in RL and robotics simulation.</p>
-        <div class="chips"><span>Keras</span><span>PyBullet</span><span>Isaac Sim</span><span>Reinforcement Learning</span></div>
-      </div>
-
-      <div class="card">
-        <div class="role">Supplier Feedback Platform</div>
-        <h3>Enterprise Product, IT Sourcing</h3>
-        <div class="yr">Summer 2025</div>
-        <p>Owned an enterprise supplier-feedback product end-to-end, replacing manual Outlook tracking and <b>100+ per-supplier Excel workbooks</b> for a 50+ person department, cutting feedback collection from hours to minutes.</p>
-        <div class="chips"><span>Power Platform</span><span>Data Architecture</span><span>Security Review</span></div>
-      </div>
-
-    </div>
-  </section>
-
-</div>
-
-<!-- ===== SCENE DIVIDER ===== -->
-<div class="scene">
-  <div class="scene-bg" style="background-image:url('assets/demo-ar-menu.jpg')" aria-hidden="true"></div>
-  <div class="scene-cap">
-    <div class="k">In the field</div>
-    <h3>Real robots, real environments, real-time perception.</h3>
-  </div>
-</div>
-
-<div class="wrap">
-
-  <!-- FIELD DEMOS -->
-  <section class="rv" id="demos">
-    <div class="sec-head"><span class="sec-idx">04</span><span class="sec-title">Field Demos</span><span class="sec-rule"></span></div>
-    <p class="demo-intro">Real-time perception, AR human-robot control, and autonomous exploration on a Boston Dynamics SPOT, captured from live runs in DOE-relevant environments.</p>
-    <figure class="demo-feature">
-      <video controls preload="none" poster="assets/autonomous-poster.jpg" playsinline>
-        <source src="assets/autonomous-demo.mp4" type="video/mp4">
-      </video>
-      <figcaption><b>Autonomous run.</b> Onboard navigation and SLAM mapping (Nav2) while a GPyTorch Gaussian Process predicts the live CO2 contaminant field in real time, streamed to the operator.</figcaption>
-    </figure>
-    <div class="gallery">
-      <figure class="shot">
-        <img src="assets/demo-ar-menu.jpg" alt="Boston Dynamics SPOT robot with a floating augmented-reality command menu in an operator's AR view" loading="lazy">
-        <figcaption><span class="t">AR Human-Robot Control</span><span class="d">Spatial command menu (go-to, calibrate, recall) anchored in the operator's AR view of the robot.</span></figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="assets/demo-gp.jpg" alt="Probabilistic contaminant field estimated by an online Gaussian Process, with an uncertainty boundary" loading="lazy">
-        <figcaption><span class="t">Probabilistic Contaminant Field</span><span class="d">Online Gaussian-Process estimate with uncertainty, fusing gas-sensor readings with SLAM odometry in real time.</span></figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="assets/demo-explore.jpg" alt="Autonomous open-frontier exploration path over a live SLAM map of an unknown environment" loading="lazy">
-        <figcaption><span class="t">Autonomous Exploration</span><span class="d">Open-frontier planning traced over a live SLAM map while mapping an unknown space.</span></figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="assets/demo-ar-control.jpg" alt="First-person AR teleoperation of the SPOT arm using a hand controller with a 6-DoF gizmo" loading="lazy">
-        <figcaption><span class="t">AR Arm Teleoperation</span><span class="d">6-DoF manipulator control through an AR headset and hand controller, overlaid on the live arm.</span></figcaption>
-      </figure>
-    </div>
-    <figure class="demo-feature demo-seg">
-      <img class="seg-img" src="assets/robot-segmentation.jpg" alt="STEGO semantic segmentation showing the input image, cluster predictions, and linear-probe predictions across indoor scenes" loading="lazy">
-      <figcaption><b>Semantic segmentation (STEGO).</b> A self-supervised transformer segments navigation-critical surfaces: input image, cluster predictions, and linear-probe predictions across indoor scenes.</figcaption>
-    </figure>
-    <p class="demo-note">Full video walkthroughs available on request.</p>
-  </section>
-
-  <!-- RESEARCH -->
-  <section class="rv" id="research">
-    <div class="sec-head"><span class="sec-idx">05</span><span class="sec-title">Research</span><span class="sec-rule"></span></div>
-    <a class="poster" href="assets/Mercury_Characterization_Poster.pdf" target="_blank" rel="noopener">
-      <div class="poster-img"><img src="assets/poster-thumb.jpg" alt="Research poster: Real-time Mercury Characterization for DOE Legacy Facilities Decommissioning Using Mobile Robotic Platforms" loading="lazy"></div>
-      <div class="poster-body">
-        <div class="role">First-Author Poster (opens full PDF)</div>
-        <h3>Real-Time Mercury Characterization for DOE Legacy Facilities Decommissioning Using Mobile Robotic Platforms</h3>
-        <div class="yr">FIU Undergraduate Research Conference, 2026<br>Applied Research Center, Florida International University</div>
-        <p>First author on DOE-funded research (MSIPP, with Savannah River National Laboratory and Oak Ridge Y-12): an <b>AR-assisted mobile robotic system</b> for real-time environmental characterization in hazardous nuclear-decommissioning sites, using multimodal sensing, real-time SLAM &amp; open-frontier exploration, semantic segmentation, and probabilistic vapor-plume estimation via Gaussian Processes on a Boston Dynamics SPOT.</p>
-        <div class="chips"><span>Boston Dynamics SPOT</span><span>ROS 2, Jetson</span><span>SLAM, Nav2</span><span>Gaussian Processes</span><span>AR / HRI</span></div>
-      </div>
-    </a>
-    <div class="panel">
-      <div class="role">Research Collaborators</div>
-      <h3>ARC / FIU Robotics Team</h3>
-      <div class="yr">Applied Research Center</div>
-      <p>Co-authors: Carlos Quintanilla, Anthony Abrahao, Leonel Lagos. Managed by Savannah River National Laboratory (SRNS Task Order 0000663600), in collaboration with Oak Ridge Y-12.</p>
-    </div>
-  </section>
-
-  <!-- INIT FIU -->
-  <section class="rv" id="init">
-    <div class="sec-head"><span class="sec-idx">06</span><span class="sec-title">INIT FIU</span><span class="sec-rule"></span></div>
-    <p class="init-lead"><b>Robotics Technical Lead and E-Board member</b> at INIT, FIU's student developer community (Jan 2025 to present). I run the robotics track: teaching hands-on workshops, mentoring members, and helping organize ShellHacks.</p>
-
-    <div class="init-workshops">
-      <figure class="portrait">
-        <img src="assets/init-teaching.jpg" alt="Franco Silvestri teaching a hands-on robotics and electronics workshop at INIT FIU" loading="lazy">
-        <figcaption>Teaching a hands-on electronics workshop at INIT</figcaption>
-      </figure>
-      <div class="init-wk-body">
-        <div class="role">Workshops</div>
-        <h3>16+ hands-on robotics &amp; electronics workshops</h3>
-        <p>I led 16+ embedded systems and robotics workshops, bringing students into electronics and coding, many for the very first time. A couple of the projects we built together:</p>
-        <ul class="pts">
-          <li>A <b>Harry Potter themed music player</b> driven by an ultrasonic sensor.</li>
-          <li>A <b>Tic-Tac-Toe AI</b> using a minimax algorithm, with wireless control.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="split">
-      <div class="panel">
-        <div class="role">ShellHacks, Florida's largest hackathon</div>
-        <h3>Co-organizer</h3>
-        <div class="stat-row"><span><b>~1,500</b> attendees</span><span><b>35+</b> sponsors</span><span><b>100</b> recruiters</span><span><b>36+</b> hrs</span></div>
-        <p>I also ran a 3 to 5 AM live build with <b>40+ students</b>: an RGB mood lamp using the Arduino RGB module, remote-controlled with multiple lighting patterns.</p>
-      </div>
-      <div class="panel init-preshellhacks">
-        <div class="role">Pre-ShellHacks Prep Workshop</div>
-        <h3>Intro to Electronics</h3>
-        <img src="assets/init-preshellhacks.jpg" alt="Pre-ShellHacks Intro to Electronics prep workshop banner" loading="lazy">
-        <p>Ran a Pre-ShellHacks prep workshop so students would show up equipped with the tools to compete.</p>
-      </div>
-    </div>
-
-    <div class="embeds">
-      <div class="embed">
-        <div class="label">Watch the workshop series</div>
-        <div class="media-facade yt" data-embed="https://www.youtube.com/embed/videoseries?list=PLjCsef875Bd9xmJ_P9Eua_j_pQCprlSVz&amp;autoplay=1" role="button" tabindex="0" aria-label="Play the YouTube workshop playlist">
-          <div class="mf-play" aria-hidden="true"></div>
-          <div class="mf-cap">16+ workshops, click to play<br><a href="https://www.youtube.com/playlist?list=PLjCsef875Bd9xmJ_P9Eua_j_pQCprlSVz" target="_blank" rel="noopener">or open on YouTube</a></div>
-        </div>
-      </div>
-      <div class="embed">
-        <div class="label">Featured: final-project workshop</div>
-        <div class="li-embed"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7322489533030187008?compact=1" height="399" width="504" frameborder="0" allowfullscreen title="Publicación integrada" loading="lazy"></iframe></div>
-      </div>
-    </div>
-  </section>
-
   <!-- TOOLBOX -->
   <section class="rv" id="skills">
     <div class="sec-head"><span class="sec-idx">07</span><span class="sec-title">Toolbox</span><span class="sec-rule"></span></div>
@@ -673,7 +661,6 @@
     <a class="btn btn-s" href="https://www.linkedin.com/in/franco-silvestri-98022b212/" target="_blank" rel="noopener"><svg class="li-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
     <a class="btn btn-s" href="tel:+17868235805">+1 (786) 823-5805</a>
   </div>
-  <div class="foot-note">Franco Silvestri. Built &amp; deployed on GitHub Pages. Miami, FL, USA.</div>
 </footer>
 
 <!-- certificate lightbox -->
