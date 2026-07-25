@@ -169,11 +169,19 @@
   .card:active{transform:scale(.992)}
   .card .role{font-family:var(--mono);font-size:11px;letter-spacing:.09em;color:var(--accent);text-transform:uppercase}
   .card h3{font-size:18.5px;font-weight:650;margin:12px 0 4px;letter-spacing:-.01em}
+  .card h3 .h3-sub{display:block;font-size:13.5px;font-weight:450;color:var(--muted);letter-spacing:0;margin-top:3px}
   .card .yr{font-family:var(--mono);font-size:11.5px;color:var(--faint)}
   .card p{font-size:14px;color:#bfbcb4;margin-top:13px}
   .card p b{color:var(--text);font-weight:650}
   .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
   .chips span{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--muted);border:1px solid var(--hair);border-radius:2px;padding:4px 8px}
+  .card a{color:var(--accent-soft);text-decoration:none;border-bottom:1px solid var(--hair-strong);transition:.2s}
+  .card a:hover{color:var(--accent);border-color:var(--accent)}
+  .card--wide{grid-column:1/-1}
+  .card-media{margin:17px 0 0;border:1px solid var(--hair);border-radius:6px;overflow:hidden;background:#000}
+  .card-media video{width:100%;max-height:430px;display:block;background:#000}
+  .card-media figcaption{padding:11px 15px;font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.6;border-top:1px solid var(--hair);background:var(--surface)}
+  .card-media figcaption b{color:var(--accent-soft)}
 
   /* ---------- split panels ---------- */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
@@ -421,7 +429,7 @@
 
       <div class="card">
         <div class="role">Co-founder and Sole Backend Engineer</div>
-        <h3>Pharmacy Quoting &amp; Compliance SaaS</h3>
+        <h3>Formira <span class="h3-sub">Pharmacy Quoting &amp; Compliance SaaS</span></h3>
         <div class="yr">Feb 2023 - Present</div>
         <p>Owned the full backend: <b>11 domain modules</b> with a pure, database-free core for exact-Decimal financial math and immutable, version-stamped quote snapshots. A <b>5-layer authorization pipeline</b> (tenant isolation, RBAC with default-deny, state-machine guards, field-level redaction) enforced through one central hook, plus an <b>append-only audit store</b> as the single source of truth.</p>
         <div class="chips"><span>Python</span><span>Django REST</span><span>PostgreSQL</span><span>Docker</span><span>CI/CD</span><span>2,900 tests</span></div>
@@ -433,6 +441,21 @@
         <div class="yr">Aug 2023 - Dec 2024</div>
         <p>Led a <b>7-member team</b> exploring reinforcement learning for robotic-arm control in simulation, experimenting with different policies across physics engines. A hands-on research and learning project that got the team fluent in RL and robotics simulation.</p>
         <div class="chips"><span>Keras</span><span>PyBullet</span><span>Isaac Sim</span><span>Reinforcement Learning</span></div>
+      </div>
+
+      <div class="card card--wide">
+        <div class="role">Detection Model and Inference Service &middot; Team of 3</div>
+        <h3>ASL Arcade <span class="h3-sub">Real-time American Sign Language recognition</span></h3>
+        <div class="yr">36 h &middot; ShellHacks 2024, Florida's largest hackathon</div>
+        <p>A 3D arcade game that teaches the ASL alphabet: it asks the player to sign a letter, watches through the webcam, and says whether they got it right. I trained the detector and built the service behind it, fine-tuning and comparing <b>two YOLOv8 backbones</b> on 26 letter classes, then serving the winner behind an HTTP endpoint that scores one frame at a time at <b>12 ms per frame</b>. The game posts a frame plus the letter it asked for and gets back a verdict, so it never has to know anything about the model. Daniel Estrada built the Unity client.</p>
+        <figure class="card-media">
+          <video controls preload="none" poster="assets/asl-demo-poster.jpg" playsinline>
+            <source src="assets/asl-demo.mp4" type="video/mp4">
+          </video>
+          <figcaption><b>The shipped detector, on footage recorded at the venue.</b> Green means the service accepted the sign at its 0.65 threshold, amber means it saw something but would not commit. It reaches <b>0.861 mAP@50-95</b> on the held-out split and is far less certain on unseen webcam frames, which is a training-data diversity problem, <a href="https://github.com/FrancoSilvestri/asl-arcade/blob/main/vision-service/docs/metrics.md" target="_blank" rel="noopener">written up here</a>.</figcaption>
+        </figure>
+        <div class="chips"><span>Python</span><span>YOLOv8</span><span>PyTorch</span><span>Flask</span><span>OpenCV</span><span>CUDA</span></div>
+        <p style="margin-top:14px"><a href="https://github.com/FrancoSilvestri/asl-arcade" target="_blank" rel="noopener">Code on GitHub</a></p>
       </div>
 
     </div>
@@ -627,7 +650,7 @@
         <div class="tl-card">
           <div class="tl-year">2026</div>
           <h3>Platform engineering and first-author research</h3>
-          <p>Returned to Genworth on the Architecture team (platform engineering and DevOps), presented <b>first-author research</b> at the FIU Undergraduate Research Conference, and moved my pharmacy SaaS toward its pilot launch.</p>
+          <p>Returned to Genworth on the Architecture team (platform engineering and DevOps), presented <b>first-author research</b> at the FIU Undergraduate Research Conference, and moved Formira, my pharmacy SaaS, toward its pilot launch.</p>
         </div>
       </div>
 
