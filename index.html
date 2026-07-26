@@ -444,9 +444,9 @@
       </div>
 
       <div class="card card--wide">
-        <div class="role">Detection Model and Inference Service &middot; Team of 3</div>
+        <div class="role">Detection Model and Inference Service, Team of 3</div>
         <h3>ASL Arcade <span class="h3-sub">Real-time American Sign Language recognition</span></h3>
-        <div class="yr">36 h &middot; ShellHacks 2024, Florida's largest hackathon</div>
+        <div class="yr">36 hours at ShellHacks 2024, Florida's largest hackathon</div>
         <p>A 3D arcade game that teaches the ASL alphabet: it asks the player to sign a letter, watches through the webcam, and says whether they got it right. I trained the detector and built the service behind it, fine-tuning and comparing <b>two YOLOv8 backbones</b> on 26 letter classes, then serving the winner behind an HTTP endpoint that scores one frame at a time at <b>12 ms per frame</b>. The game posts a frame plus the letter it asked for and gets back a verdict, so it never has to know anything about the model. Daniel Estrada built the Unity client.</p>
         <figure class="card-media">
           <video controls preload="none" poster="assets/asl-demo-poster.jpg" playsinline>
