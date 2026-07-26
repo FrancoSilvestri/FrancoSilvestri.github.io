@@ -6,6 +6,41 @@
 <title>Franco Silvestri, Systems &amp; Backend Engineer</title>
 <meta name="description" content="Franco Silvestri is a systems, backend, and robotics engineer working on real-time perception, distributed systems, and enterprise platform engineering.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1116'/%3E%3Crect x='22' y='16' width='7' height='33' fill='%23eceae3'/%3E%3Crect x='22' y='16' width='20' height='7' fill='%23eceae3'/%3E%3Crect x='22' y='28' width='15' height='6' fill='%23eceae3'/%3E%3Ccircle cx='44' cy='45' r='4' fill='%23ff9d47'/%3E%3C/svg%3E">
+
+<!-- ===== canonical / indexing ===== -->
+<link rel="canonical" href="https://francosilvestri.github.io/">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta name="author" content="Franco Silvestri">
+<meta name="theme-color" content="#0b0c0f">
+<meta name="color-scheme" content="dark">
+<link rel="me" href="https://github.com/FrancoSilvestri">
+<link rel="me" href="https://www.linkedin.com/in/franco-silvestri-98022b212/">
+<link rel="me" href="mailto:fransilvestri02@gmail.com">
+<link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
+
+<!-- ===== Open Graph ===== -->
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Franco Silvestri">
+<meta property="og:title" content="Franco Silvestri, Systems &amp; Backend Engineer">
+<meta property="og:description" content="Systems, backend and robotics engineer. Real-time perception on quadruped robots, distributed ROS 2 systems, and enterprise platform engineering at scale.">
+<meta property="og:url" content="https://francosilvestri.github.io/">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://francosilvestri.github.io/assets/og-card.jpg">
+<meta property="og:image:secure_url" content="https://francosilvestri.github.io/assets/og-card.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Franco Silvestri kneeling beside two Boston Dynamics SPOT quadruped robots in the FIU Applied Research Center lab.">
+<meta property="profile:first_name" content="Franco">
+<meta property="profile:last_name" content="Silvestri">
+<meta property="profile:username" content="FrancoSilvestri">
+
+<!-- ===== Twitter / X ===== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Franco Silvestri, Systems &amp; Backend Engineer">
+<meta name="twitter:description" content="Systems, backend and robotics engineer. Real-time perception on quadruped robots, distributed ROS 2 systems, and enterprise platform engineering at scale.">
+<meta name="twitter:image" content="https://francosilvestri.github.io/assets/og-card.jpg">
+<meta name="twitter:image:alt" content="Franco Silvestri kneeling beside two Boston Dynamics SPOT quadruped robots in the FIU Applied Research Center lab.">
 <style>
   :root{
     --bg:#0b0c0f;
@@ -58,7 +93,7 @@
   .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
   .dot{width:7px;height:7px;border-radius:50%;background:var(--signal);box-shadow:0 0 10px var(--signal);animation:pulse 2.4s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-  h1{font-family:var(--mono);font-weight:700;font-size:clamp(46px,10.5vw,116px);line-height:.94;letter-spacing:-.02em;text-transform:uppercase;text-shadow:0 2px 40px rgba(0,0,0,.4)}
+  h1{font-family:var(--mono);font-weight:700;font-size:clamp(46px,10.5vw,116px);line-height:.94;letter-spacing:-.02em;text-transform:uppercase;text-shadow:0 2px 40px rgba(0,0,0,.4);max-width:12ch}
   .hero-tag{max-width:600px;margin-top:24px;font-size:clamp(16px,2.1vw,21px);color:#d8d5cc}
   .hero-tag b{color:#fff;font-weight:600}
   .cta-row{margin-top:30px;display:flex;flex-wrap:wrap;gap:14px}
@@ -90,7 +125,8 @@
   section{padding:76px 0;border-bottom:1px solid var(--hair)}
   .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:36px}
   .sec-idx{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--accent);letter-spacing:.06em}
-  .sec-title{font-family:var(--mono);font-size:clamp(20px,3.2vw,28px);font-weight:700;letter-spacing:-.01em;text-transform:uppercase}
+  .sec-title{margin:0;font-family:var(--mono);font-size:clamp(20px,3.2vw,28px);font-weight:700;letter-spacing:-.01em;text-transform:uppercase}
+  .sec-mark{flex:none;align-self:center;width:28px;height:28px;border-radius:6px;display:block;border:1px solid var(--hair)}
   .sec-rule{flex:1;height:1px;background:var(--hair);align-self:center;transform-origin:left}
   .js .rv .sec-rule{transform:scaleX(0);transition:transform .9s ease .1s}
   .rv.in .sec-rule{transform:scaleX(1)}
@@ -141,10 +177,20 @@
   .lb-pdf:hover{border-color:var(--accent);color:var(--accent)}
 
   /* ---------- experience entries ---------- */
-  .entry{display:grid;grid-template-columns:170px 1fr;gap:26px;padding:26px 0;border-top:1px solid var(--hair)}
+  .entry{display:grid;grid-template-columns:190px 1fr;gap:26px;padding:26px 0;border-top:1px solid var(--hair)}
   .entry:first-of-type{border-top:none}
-  .entry .when{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.03em;padding-top:4px}
-  .entry .when .loc{display:block;color:var(--faint);margin-top:6px}
+  .entry-rail{padding-top:2px}
+  .logos{display:inline-flex;align-items:center;gap:13px;padding:11px 13px;min-height:64px;
+         background:#fff;border-radius:6px;box-shadow:0 8px 22px -14px rgba(0,0,0,.9);
+         margin-bottom:14px}
+  .logos img{display:block;flex:none}
+  .logo-arc{width:36px;height:36px}
+  .logo-doe{width:42px;height:42px}
+  .logo-gw{width:113px;height:27px}
+  .logo-div{flex:none;width:1px;height:30px;background:rgba(11,12,15,.16)}
+  .entry-org{font-size:15px;font-weight:650;letter-spacing:-.01em;color:var(--text);line-height:1.34}
+  .entry .when{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.03em;padding-top:6px}
+  .entry .when .loc{display:block;color:var(--faint);margin-top:5px}
   .entry h3{font-size:19px;font-weight:650;letter-spacing:-.01em}
   .entry .org{font-family:var(--mono);font-size:12.5px;color:var(--accent-soft);margin-top:5px;letter-spacing:.02em}
   .entry .sub{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:12px 0 4px;text-transform:uppercase;letter-spacing:.08em}
@@ -152,7 +198,19 @@
   ul.pts li{position:relative;padding-left:20px;font-size:14.5px;color:#c3c0b8}
   ul.pts li::before{content:"▸";position:absolute;left:0;color:var(--accent);font-size:12px;top:1px}
   ul.pts li b{color:var(--text);font-weight:650}
-  @media(max-width:720px){.entry{grid-template-columns:1fr;gap:10px}}
+  @media(max-width:720px){
+    .entry{grid-template-columns:1fr;gap:14px}
+    .entry-rail{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-items:center;padding-top:0}
+    .entry-rail .logos{grid-row:1 / 3;margin-bottom:0}
+    .entry .when{padding-top:2px}
+  }
+  @media(max-width:400px){
+    .logos{gap:10px;padding:9px 10px;min-height:56px}
+    .logo-arc{width:31px;height:31px}
+    .logo-doe{width:36px;height:36px}
+    .logo-gw{width:96px;height:23px}
+    .logo-div{height:26px}
+  }
   /* genworth two-rotation connector */
   .rotations{position:relative;padding-left:24px;margin-top:14px}
   .rotations::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--accent-soft));border-radius:2px}
@@ -348,6 +406,125 @@
   }
 </style>
 <script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://francosilvestri.github.io/#franco",
+      "name": "Franco Silvestri",
+      "givenName": "Franco",
+      "familyName": "Silvestri",
+      "url": "https://francosilvestri.github.io/",
+      "mainEntityOfPage": { "@id": "https://francosilvestri.github.io/#profilepage" },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://francosilvestri.github.io/assets/og-card.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "jobTitle": "Systems and Backend Engineer",
+      "description": "Systems, backend and robotics engineer. Perception and Systems Lead on a DOE-funded robotics project at the FIU Applied Research Center, platform engineering intern at Genworth Financial, and sole backend engineer on Formira, a pharmacy quoting and compliance SaaS.",
+      "email": "mailto:fransilvestri02@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Miami",
+        "addressRegion": "FL",
+        "addressCountry": "US"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Florida International University",
+        "url": "https://www.fiu.edu/",
+        "sameAs": "https://en.wikipedia.org/wiki/Florida_International_University"
+      },
+      "worksFor": [
+        {
+          "@type": "ResearchOrganization",
+          "name": "FIU Applied Research Center",
+          "url": "https://arc.fiu.edu/",
+          "parentOrganization": {
+            "@type": "CollegeOrUniversity",
+            "name": "Florida International University",
+            "url": "https://www.fiu.edu/"
+          }
+        },
+        {
+          "@type": "Organization",
+          "name": "Genworth Financial",
+          "url": "https://www.genworth.com/"
+        }
+      ],
+      "knowsAbout": [
+        "Python",
+        "C++",
+        "Java",
+        "JavaScript",
+        "TypeScript",
+        "SQL",
+        "ROS 2",
+        "Distributed Systems",
+        "Real-Time Systems",
+        "Robotics",
+        "Semantic Segmentation",
+        "SLAM",
+        "Nav2",
+        "Sensor Fusion",
+        "Gaussian Processes",
+        "PyTorch",
+        "CUDA",
+        "TensorRT",
+        "NVIDIA Jetson",
+        "Docker",
+        "Kubernetes",
+        "GitLab CI",
+        "Jenkins",
+        "Django REST Framework",
+        "PostgreSQL",
+        "Amazon Web Services",
+        "Linux",
+        "DevOps",
+        "Backend Engineering"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/franco-silvestri-98022b212/",
+        "https://github.com/FrancoSilvestri"
+      ]
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://francosilvestri.github.io/#profilepage",
+      "url": "https://francosilvestri.github.io/",
+      "name": "Franco Silvestri, Systems & Backend Engineer",
+      "isPartOf": { "@id": "https://francosilvestri.github.io/#website" },
+      "about": { "@id": "https://francosilvestri.github.io/#franco" },
+      "mainEntity": { "@id": "https://francosilvestri.github.io/#franco" },
+      "primaryImageOfPage": { "@id": "https://francosilvestri.github.io/#ogcard" },
+      "inLanguage": "en-US",
+      "dateModified": "2026-07-26"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://francosilvestri.github.io/#ogcard",
+      "url": "https://francosilvestri.github.io/assets/og-card.jpg",
+      "contentUrl": "https://francosilvestri.github.io/assets/og-card.jpg",
+      "width": 1200,
+      "height": 630,
+      "caption": "Franco Silvestri kneeling beside two Boston Dynamics SPOT quadruped robots in the FIU Applied Research Center lab."
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://francosilvestri.github.io/#website",
+      "url": "https://francosilvestri.github.io/",
+      "name": "Franco Silvestri",
+      "alternateName": "Franco Silvestri, Systems & Backend Engineer",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://francosilvestri.github.io/#franco" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div id="progress"></div>
@@ -373,12 +550,13 @@
   <div class="hero-grade" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="kicker"><span class="dot"></span> Systems, Backend and Robotics in Miami, FL, USA</div>
-    <h1>Franco<br>Silvestri</h1>
+    <h1>Franco Silvestri</h1>
     <p class="hero-tag">I build <b>real-time, distributed, and backend systems</b>, from perception on quadruped robots to enterprise platforms at scale.</p>
     <div class="cta-row">
       <a class="btn btn-p" href="Franco_Silvestri_Resume.pdf">Download resume (PDF)</a>
       <a class="btn btn-s" href="mailto:fransilvestri02@gmail.com">Email</a>
-      <a class="btn btn-s" href="https://www.linkedin.com/in/franco-silvestri-98022b212/" target="_blank" rel="noopener"><svg class="li-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+      <a class="btn btn-s" href="https://www.linkedin.com/in/franco-silvestri-98022b212/" target="_blank" rel="me noopener"><svg class="li-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+      <a class="btn btn-s" href="https://github.com/FrancoSilvestri" target="_blank" rel="me noopener"><svg class="li-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>GitHub</a>
     </div>
   </div>
   <a class="scroll-cue" href="#about" aria-label="Scroll down"><span>scroll</span><span class="chev"></span></a>
@@ -404,17 +582,25 @@
 
   <!-- ABOUT -->
   <section class="about rv" id="about">
-    <div class="sec-head"><span class="sec-idx">00</span><span class="sec-title">About</span><span class="sec-rule"></span></div>
+    <div class="sec-head"><span class="sec-idx">00</span><h2 class="sec-title">About</h2><span class="sec-rule"></span></div>
     <p>Hi, I'm Franco. I like problems where <b>correctness, performance, and scale all matter at once</b>: running two deep models on a single embedded GPU in real time, keeping 110+ enterprise services shipping through hardened pipelines, or designing an authorization layer that no endpoint can bypass.</p>
     <p>I work across the stack, from <b>C++ on robots</b> to <b>Python backends</b> to <b>Kubernetes in production</b>, and I care about systems that hold up after the demo is over. Most days you'll find me in the Applied Research Center lab, teaching a quadruped to understand the world a little better.</p>
   </section>
 
   <!-- EXPERIENCE -->
   <section class="rv" id="work">
-    <div class="sec-head"><span class="sec-idx">01</span><span class="sec-title">Experience</span><span class="sec-rule"></span></div>
+    <div class="sec-head"><span class="sec-idx">01</span><h2 class="sec-title">Experience</h2><span class="sec-rule"></span></div>
 
     <div class="entry">
-      <div class="when">Jan 2024 - Present<span class="loc">FIU Applied Research Center<br>Miami, FL, USA</span></div>
+      <div class="entry-rail">
+        <div class="logos" aria-hidden="true">
+          <img class="logo-arc" src="assets/logos/arc.png" alt="" loading="lazy">
+          <span class="logo-div"></span>
+          <img class="logo-doe" src="assets/logos/doe-seal.png" alt="" loading="lazy">
+        </div>
+        <div class="entry-org">FIU Applied Research Center</div>
+        <div class="when">Jan 2024 - Present<span class="loc">Miami, FL, USA</span></div>
+      </div>
       <div>
         <h3>Robotics Research Assistant, Perception &amp; Systems Lead</h3>
         <div class="org">DOE MSIPP, with Savannah River National Lab &amp; Oak Ridge Y-12</div>
@@ -429,7 +615,13 @@
     </div>
 
     <div class="entry">
-      <div class="when">Summers 2025 &amp; 2026<span class="loc">Genworth Financial<br>Richmond, VA, USA</span></div>
+      <div class="entry-rail">
+        <div class="logos" aria-hidden="true">
+          <img class="logo-gw" src="assets/logos/genworth.png" alt="" loading="lazy">
+        </div>
+        <div class="entry-org">Genworth Financial</div>
+        <div class="when">Summers 2025 &amp; 2026<span class="loc">Richmond, VA, USA</span></div>
+      </div>
       <div>
         <h3>IT Development Program, Returning Intern</h3>
         <div class="org">Two rotations across two summers</div>
@@ -458,7 +650,7 @@
 
   <!-- PROJECTS -->
   <section class="rv" id="projects">
-    <div class="sec-head"><span class="sec-idx">02</span><span class="sec-title">Projects</span><span class="sec-rule"></span></div>
+    <div class="sec-head"><span class="sec-idx">02</span><h2 class="sec-title">Projects</h2><span class="sec-rule"></span></div>
     <div class="grid">
 
       <article class="card">
@@ -563,7 +755,7 @@
 
   <!-- FIELD DEMOS -->
   <section class="rv" id="demos">
-    <div class="sec-head"><span class="sec-idx">03</span><span class="sec-title">Field Demos</span><span class="sec-rule"></span></div>
+    <div class="sec-head"><span class="sec-idx">03</span><h2 class="sec-title">Field Demos</h2><span class="sec-rule"></span></div>
     <p class="demo-intro">Real-time perception, AR human-robot control, and autonomous exploration on a Boston Dynamics SPOT, captured from live runs in DOE-relevant environments.</p>
     <figure class="demo-feature">
       <video controls preload="none" poster="assets/spot/autonomous-poster.jpg" playsinline>
@@ -597,7 +789,7 @@
 
   <!-- RESEARCH -->
   <section class="rv" id="research">
-    <div class="sec-head"><span class="sec-idx">04</span><span class="sec-title">Research</span><span class="sec-rule"></span></div>
+    <div class="sec-head"><span class="sec-idx">04</span><h2 class="sec-title">Research</h2><span class="sec-rule"></span></div>
     <a class="poster" href="assets/research/Mercury_Characterization_Poster.pdf" target="_blank" rel="noopener">
       <div class="poster-img"><img src="assets/research/poster-thumb.jpg" alt="Research poster: Real-time Mercury Characterization for DOE Legacy Facilities Decommissioning Using Mobile Robotic Platforms" loading="lazy"></div>
       <div class="poster-body">
@@ -618,7 +810,7 @@
 
   <!-- INIT FIU -->
   <section class="rv" id="init">
-    <div class="sec-head"><span class="sec-idx">05</span><span class="sec-title">INIT FIU</span><span class="sec-rule"></span></div>
+    <div class="sec-head"><span class="sec-idx">05</span><img class="sec-mark" src="assets/logos/init-mark.png" alt="" aria-hidden="true" loading="lazy"><h2 class="sec-title">INIT FIU</h2><span class="sec-rule"></span></div>
     <p class="init-lead"><b>Robotics Technical Lead and E-Board member</b> at INIT, FIU's student developer community (Jan 2025 to present). I run the robotics track: teaching hands-on workshops, mentoring members, and helping organize ShellHacks.</p>
 
     <div class="init-workshops">
@@ -674,7 +866,7 @@
 
   <!-- THE JOURNEY -->
   <section class="rv" id="journey">
-    <div class="sec-head"><span class="sec-idx">06</span><span class="sec-title">The Journey</span><span class="sec-rule"></span></div>
+    <div class="sec-head"><span class="sec-idx">06</span><h2 class="sec-title">The Journey</h2><span class="sec-rule"></span></div>
     <p class="journey-intro">It started years before college and <b>hasn't slowed down since</b>: self-taught code, first hardware, first real systems.</p>
     <div class="timeline rv">
       <div class="tl-line" aria-hidden="true"></div>
@@ -755,7 +947,7 @@
 
   <!-- TOOLBOX -->
   <section class="rv" id="skills">
-    <div class="sec-head"><span class="sec-idx">07</span><span class="sec-title">Toolbox</span><span class="sec-rule"></span></div>
+    <div class="sec-head"><span class="sec-idx">07</span><h2 class="sec-title">Toolbox</h2><span class="sec-rule"></span></div>
     <div class="skillset">
       <div class="skrow"><div class="cat">Languages</div><div class="items"><span>Python</span><span>C++</span><span>Java</span><span>JavaScript / TypeScript</span><span>SQL</span></div></div>
       <div class="skrow"><div class="cat">Systems &amp; Backend</div><div class="items"><span>Distributed Systems</span><span>Real-Time Systems</span><span>Networking</span><span>ROS 2</span><span>DDS Middleware</span><span>Django REST</span><span>PostgreSQL</span></div></div>
@@ -769,10 +961,11 @@
 <!-- ===== CONTACT (credits) ===== -->
 <footer id="contact">
   <div class="credits-kicker">Next chapter</div>
-  <div class="big">The next build starts here<br><a href="mailto:fransilvestri02@gmail.com">fransilvestri02@gmail.com</a></div>
+  <div class="big">The next build starts here<br><a href="mailto:fransilvestri02@gmail.com" rel="me">fransilvestri02@gmail.com</a></div>
   <div class="links">
     <a class="btn btn-p" href="Franco_Silvestri_Resume.pdf">Resume (PDF)</a>
-    <a class="btn btn-s" href="https://www.linkedin.com/in/franco-silvestri-98022b212/" target="_blank" rel="noopener"><svg class="li-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+    <a class="btn btn-s" href="https://www.linkedin.com/in/franco-silvestri-98022b212/" target="_blank" rel="me noopener"><svg class="li-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+    <a class="btn btn-s" href="https://github.com/FrancoSilvestri" target="_blank" rel="me noopener"><svg class="li-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.3 1.9 1.3 3.2 0 4.6-2.8 5.6-5.5 5.9.5.4.9 1.1.9 2.3v3.3c0 .3.1.7.8.6A12 12 0 0 0 12 .3"/></svg>GitHub</a>
     <a class="btn btn-s" href="tel:+17868235805">+1 (786) 823-5805</a>
   </div>
 </footer>
