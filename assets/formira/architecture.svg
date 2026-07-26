@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 636" width="900" height="636" role="img" aria-labelledby="ftitle fdesc" font-family="ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, Consolas, monospace">
+  <title id="ftitle">Formira request path</title>
+  <desc id="fdesc">Every API request passes through a single enforcement hook containing five authorization layers before reaching the domain core. Writes emit events into an append-only audit store, and reporting and compliance are read-only projections over that store.</desc>
+
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#565c68"/>
+    </marker>
+    <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ff9d47"/>
+    </marker>
+    <marker id="arG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6ee7a0"/>
+    </marker>
+  </defs>
+
+  <rect x="28" y="26" width="300" height="52" rx="5" fill="#171b26" stroke="rgba(255,255,255,.16)"/>
+  <text x="46" y="57" fill="#eceae3" font-size="16">API request</text>
+  <text x="310" y="57" fill="#565c68" font-size="12" text-anchor="end">any endpoint</text>
+
+  <path d="M178,78 L178,110" stroke="#565c68" stroke-width="1.5" marker-end="url(#ar)" fill="none"/>
+
+  <rect x="28" y="116" width="380" height="372" rx="6" fill="none" stroke="#ff9d47" stroke-opacity=".55" stroke-dasharray="5 4"/>
+  <text x="44" y="140" fill="#ff9d47" font-size="12.5" letter-spacing=".08em">ONE ENFORCEMENT HOOK</text>
+  <text x="392" y="140" fill="#878d9a" font-size="12" text-anchor="end">no endpoint bypasses it</text>
+
+  <rect x="48" y="156" width="340" height="52" rx="5" fill="#171b26" stroke="rgba(255,255,255,.14)"/>
+  <text x="66" y="180" fill="#565c68" font-size="12">01</text>
+  <text x="96" y="180" fill="#eceae3" font-size="14.5">Tenant isolation</text>
+  <text x="96" y="197" fill="#878d9a" font-size="12">cross-tenant reads never resolve</text>
+
+  <rect x="48" y="220" width="340" height="52" rx="5" fill="#171b26" stroke="rgba(255,255,255,.14)"/>
+  <text x="66" y="244" fill="#565c68" font-size="12">02</text>
+  <text x="96" y="244" fill="#eceae3" font-size="14.5">Plan entitlement gating</text>
+  <text x="96" y="261" fill="#878d9a" font-size="12">feature access by subscription tier</text>
+
+  <rect x="48" y="284" width="340" height="52" rx="5" fill="#171b26" stroke="rgba(255,255,255,.14)"/>
+  <text x="66" y="308" fill="#565c68" font-size="12">03</text>
+  <text x="96" y="308" fill="#eceae3" font-size="14.5">Capability-based RBAC</text>
+  <text x="96" y="325" fill="#878d9a" font-size="12">default deny, instant revocation</text>
+
+  <rect x="48" y="348" width="340" height="52" rx="5" fill="#171b26" stroke="rgba(255,255,255,.14)"/>
+  <text x="66" y="372" fill="#565c68" font-size="12">04</text>
+  <text x="96" y="372" fill="#eceae3" font-size="14.5">State-machine guards</text>
+  <text x="96" y="389" fill="#878d9a" font-size="12">only legal transitions are accepted</text>
+
+  <rect x="48" y="412" width="340" height="52" rx="5" fill="#171b26" stroke="rgba(255,255,255,.14)"/>
+  <text x="66" y="436" fill="#565c68" font-size="12">05</text>
+  <text x="96" y="436" fill="#eceae3" font-size="14.5">Field-level redaction</text>
+  <text x="96" y="453" fill="#878d9a" font-size="12">sensitive pricing stripped per role</text>
+
+  <path d="M408,302 L470,302" stroke="#ff9d47" stroke-width="1.5" marker-end="url(#arA)" fill="none"/>
+  <text x="439" y="293" fill="#ff9d47" font-size="11.5" text-anchor="middle">allowed</text>
+
+  <rect x="486" y="252" width="386" height="100" rx="6" fill="#171b26" stroke="rgba(255,255,255,.16)"/>
+  <text x="506" y="282" fill="#eceae3" font-size="16">Domain core, 11 modules</text>
+  <text x="506" y="305" fill="#878d9a" font-size="12.5">no database access, exact Decimal math</text>
+  <text x="506" y="325" fill="#878d9a" font-size="12.5">immutable, version-stamped quote snapshots</text>
+
+  <path d="M679,352 L679,398" stroke="#6ee7a0" stroke-width="1.5" marker-end="url(#arG)" fill="none"/>
+  <text x="691" y="379" fill="#6ee7a0" font-size="11.5">every state change</text>
+
+  <rect x="486" y="404" width="386" height="76" rx="6" fill="#171b26" stroke="#6ee7a0" stroke-opacity=".5"/>
+  <text x="506" y="433" fill="#eceae3" font-size="16">Append-only audit event store</text>
+  <text x="506" y="456" fill="#878d9a" font-size="12.5">the system of record, nothing is ever updated</text>
+
+  <path d="M580,480 L580,522" stroke="#565c68" stroke-width="1.5" marker-end="url(#ar)" fill="none"/>
+  <path d="M778,480 L778,522" stroke="#565c68" stroke-width="1.5" marker-end="url(#ar)" fill="none"/>
+
+  <rect x="486" y="528" width="186" height="62" rx="5" fill="#171b26" stroke="rgba(255,255,255,.14)"/>
+  <text x="504" y="553" fill="#eceae3" font-size="14.5">Reporting</text>
+  <text x="504" y="572" fill="#878d9a" font-size="12">read-only projection</text>
+
+  <rect x="686" y="528" width="186" height="62" rx="5" fill="#171b26" stroke="rgba(255,255,255,.14)"/>
+  <text x="704" y="553" fill="#eceae3" font-size="14.5">Compliance</text>
+  <text x="704" y="572" fill="#878d9a" font-size="12">read-only projection</text>
+
+  <text x="48" y="478" fill="#565c68" font-size="11.5">RBAC matrix fails CI on unclassified routes.</text>
+  <text x="28" y="614" fill="#565c68" font-size="12">2,900 tests, unit through end to end.</text>
+  <text x="486" y="614" fill="#565c68" font-size="12">Projections never write back to domain tables.</text>
+</svg>

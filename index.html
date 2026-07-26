@@ -132,7 +132,9 @@
   /* ---------- lightbox ---------- */
   .lightbox{position:fixed;inset:0;z-index:200;background:rgba(4,5,7,.93);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:26px}
   .lightbox.open{display:flex}
-  .lightbox img{max-width:92vw;max-height:78vh;border-radius:6px;box-shadow:0 30px 90px -20px #000}
+  .lightbox img{max-width:92vw;max-height:76vh;border-radius:6px;box-shadow:0 30px 90px -20px #000}
+  .lb-cap{max-width:min(760px,90vw);margin:0;text-align:center;font-family:var(--mono);font-size:12.5px;line-height:1.65;color:var(--muted)}
+  .lb-cap:empty{display:none}
   .lb-close{position:absolute;top:16px;right:22px;font-family:var(--mono);font-size:30px;line-height:1;color:var(--text);background:none;border:none;cursor:pointer}
   .lb-close:hover{color:var(--accent)}
   .lb-pdf{font-family:var(--mono);font-size:12px;color:var(--accent-soft);text-decoration:none;border:1px solid var(--hair-strong);border-radius:3px;padding:8px 14px}
@@ -160,8 +162,7 @@
   .rot-when{font-family:var(--mono);font-size:11.5px;color:var(--accent-soft);letter-spacing:.03em;margin-bottom:2px}
 
   /* ---------- project cards ---------- */
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  .grid{display:grid;grid-template-columns:1fr;gap:18px}
   .card{background:var(--surface);border:1px solid var(--hair);border-radius:6px;padding:26px;transition:.22s;position:relative;overflow:hidden}
   .card::after{content:"";position:absolute;left:0;top:0;height:2px;width:0;background:var(--accent);transition:width .3s}
   .card:hover{border-color:var(--hair-strong);transform:translateY(-3px);background:var(--surface-2)}
@@ -177,11 +178,42 @@
   .chips span{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--muted);border:1px solid var(--hair);border-radius:2px;padding:4px 8px}
   .card a{color:var(--accent-soft);text-decoration:none;border-bottom:1px solid var(--hair-strong);transition:.2s}
   .card a:hover{color:var(--accent);border-color:var(--accent)}
-  .card--wide{grid-column:1/-1}
   .card-media{margin:17px 0 0;border:1px solid var(--hair);border-radius:6px;overflow:hidden;background:#000}
   .card-media video{width:100%;max-height:430px;display:block;background:#000}
   .card-media figcaption{padding:11px 15px;font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.6;border-top:1px solid var(--hair);background:var(--surface)}
   .card-media figcaption b{color:var(--accent-soft)}
+  .diagram-wrap{overflow-x:auto;background:#0f1116}
+  .card-media .diagram{display:block;width:100%;height:auto;background:#0f1116;cursor:zoom-in}
+  .card-media .zoom-hint{float:right;color:var(--faint)}
+  @media(max-width:820px){
+    .diagram-wrap .diagram{min-width:660px;cursor:default}
+    .card-media .zoom-hint{float:none;display:block;margin-top:5px}
+  }
+  .gallery-3{grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+  .gallery-3 .shot img{height:206px}
+  .gallery-3 .shot figcaption{padding:26px 13px 11px}
+  @media(max-width:720px){.gallery-3{grid-template-columns:1fr}}
+  .proj-links{display:flex;flex-wrap:wrap;gap:9px 20px;margin-top:17px;font-family:var(--mono);font-size:11.5px}
+  .proj-links a{color:var(--accent-soft);text-decoration:none;border-bottom:1px solid var(--hair-strong);padding-bottom:2px;transition:.2s}
+  .proj-links a:hover{color:var(--accent);border-color:var(--accent)}
+  .proj-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.2,.7,.2,1)}
+  .proj-more>.pm-in{overflow:hidden;min-height:0}
+  .card.open .proj-more{grid-template-rows:1fr}
+  .proj-toggle{display:inline-flex;align-items:center;gap:9px;margin-top:17px;padding:13px 17px;min-height:44px;
+    background:transparent;border:1px solid var(--hair-strong);border-radius:4px;color:var(--accent-soft);
+    font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:.22s}
+  .proj-toggle:hover{border-color:var(--accent);color:var(--accent);background:rgba(255,157,71,.06)}
+  .proj-toggle .tg-caret{transition:transform .35s cubic-bezier(.2,.7,.2,1);font-size:14px;line-height:1}
+  .card.open .proj-toggle .tg-caret{transform:rotate(90deg)}
+  .proj-peek{display:flex;gap:8px;margin-top:16px}
+  .proj-peek img{width:78px;height:52px;object-fit:cover;border-radius:3px;border:1px solid var(--hair);opacity:.72;transition:.25s}
+  .card.open .proj-peek{display:none}
+  .proj-toggle:hover ~ .proj-peek img,.proj-peek img:hover{opacity:1}
+  @media(prefers-reduced-motion:reduce){.proj-more{transition:none}.proj-toggle .tg-caret{transition:none}}
+  .proj-metrics{display:flex;flex-wrap:wrap;gap:26px;margin-top:17px;padding-top:16px;border-top:1px solid var(--hair)}
+  .proj-metrics div{display:flex;flex-direction:column;gap:2px}
+  .proj-metrics .n{font-family:var(--mono);font-size:19px;color:var(--accent-soft);letter-spacing:-.01em}
+  .proj-metrics .l{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}
 
   /* ---------- split panels ---------- */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
@@ -217,10 +249,12 @@
 
   /* ---------- field demos ---------- */
   .demo-intro{max-width:720px;color:#c3c0b8;font-size:15px;margin-bottom:26px}
-  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:720px){.gallery{grid-template-columns:1fr}}
   .shot{position:relative;border:1px solid var(--hair);border-radius:7px;overflow:hidden;background:#0a0b0e;margin:0}
-  .shot img{width:100%;height:290px;object-fit:cover;display:block;transition:transform .55s}
+  .shot img{width:100%;height:158px;object-fit:cover;object-position:center;display:block;background:#0a0b0e;transition:transform .55s;cursor:zoom-in}
+  .shot--tall img{object-position:center 28%}
   .shot:hover img{transform:scale(1.045)}
   .shot:hover{border-color:var(--hair-strong)}
   .shot:active{transform:scale(.992)}
@@ -363,7 +397,7 @@
     <div class="telemetry">
       <div class="stat"><div class="num" data-count="22" data-suffix="×">22×</div><div class="lbl">Inference latency<br>reduction</div></div>
       <div class="stat"><div class="num" data-count="2900" data-suffix="">2,900</div><div class="lbl">Automated tests<br>on the SaaS</div></div>
-      <div class="stat"><div class="num" data-count="100" data-suffix="+">100+</div><div class="lbl">Enterprise systems<br>on CI/CD</div></div>
+      <div class="stat"><div class="num" data-count="110" data-suffix="+">110+</div><div class="lbl">Enterprise systems<br>on CI/CD</div></div>
       <div class="stat"><div class="num" data-count="16" data-suffix="+">16+</div><div class="lbl">Robotics workshops<br>led &amp; taught</div></div>
     </div>
   </div>
@@ -371,7 +405,7 @@
   <!-- ABOUT -->
   <section class="about rv" id="about">
     <div class="sec-head"><span class="sec-idx">00</span><span class="sec-title">About</span><span class="sec-rule"></span></div>
-    <p>Hi, I'm Franco. I like problems where <b>correctness, performance, and scale all matter at once</b>: running two deep models on a single embedded GPU in real time, keeping 100+ enterprise services shipping through hardened pipelines, or designing an authorization layer that no endpoint can bypass.</p>
+    <p>Hi, I'm Franco. I like problems where <b>correctness, performance, and scale all matter at once</b>: running two deep models on a single embedded GPU in real time, keeping 110+ enterprise services shipping through hardened pipelines, or designing an authorization layer that no endpoint can bypass.</p>
     <p>I work across the stack, from <b>C++ on robots</b> to <b>Python backends</b> to <b>Kubernetes in production</b>, and I care about systems that hold up after the demo is over. Most days you'll find me in the Applied Research Center lab, teaching a quadruped to understand the world a little better.</p>
   </section>
 
@@ -385,7 +419,7 @@
         <h3>Robotics Research Assistant, Perception &amp; Systems Lead</h3>
         <div class="org">DOE MSIPP, with Savannah River National Lab &amp; Oak Ridge Y-12</div>
         <ul class="pts">
-          <li>Cut real-time inference latency <b>22×</b> over an unoptimized PyTorch GPU baseline (CUDA, quantization, TensorRT) for a DeepLabV3+/STEGO segmentation pipeline that <b>achieved a maximum of 72% mIoU</b>, deployed onboard for real-time field demonstrations alongside a Gaussian Process model on <b>one Jetson Orin Nano</b>.</li>
+          <li>Cut real-time inference latency <b>22×</b> over an unoptimized PyTorch GPU baseline (CUDA, quantization, TensorRT) for a DeepLabV3+/STEGO segmentation pipeline that <b>achieved a maximum of 72% mIoU</b> across 21 navigation-critical classes, deployed onboard for real-time field demonstrations alongside a Gaussian Process model on <b>one Jetson Orin Nano</b>.</li>
           <li>Designed a <b>sensor-agnostic ROS 2 node architecture</b> so new sensors integrate without touching downstream navigation, mapping, or visualization, then deployed across multiple robotic platforms.</li>
           <li>Built <b>distributed ROS 2 components</b> in C++/Python and <b>designed the robot's networking infrastructure from scratch</b> (IP addressing, low-level Linux, DDS tuning, traffic prioritization), owning bottleneck analysis across the sensor-to-inference-to-operator path to hold real-time latency under load.</li>
           <li>Built an online <b>Gaussian Process node in GPyTorch</b> (CUDA), fine-tuned to the live CO2 sensor response; exposes feed and predict ROS 2 services that return mean and uncertainty for adaptive sampling, running concurrently with the segmentation model on the Jetson.</li>
@@ -401,11 +435,11 @@
         <div class="org">Two rotations across two summers</div>
         <div class="rotations">
           <div class="rotation">
-            <div class="rot-when">May 2026 - Present</div>
+            <div class="rot-when">May 2026 - Aug 2026</div>
             <div class="sub">Platform Engineering &amp; DevOps, Architecture Team</div>
             <ul class="pts">
-              <li>Standardized CI/CD across a <b>100+ system</b> enterprise portfolio, building end-to-end pipelines for <b>80+</b> via reusable GitLab CI templates per app type (React/Angular, Node, Java REST, monoliths).</li>
-              <li>Raised the internal DevOps Adoption score across a 110+ project portfolio <b>from 39 to 75</b>, the top-ranked score among teams maintaining the largest portfolios.</li>
+              <li>Standardized CI/CD across a <b>110+ system</b> enterprise portfolio, building end-to-end pipelines for <b>80+</b> applications via reusable GitLab CI templates per app type (React/Angular, Node, Java REST, monoliths).</li>
+              <li>Raised the portfolio's average internal DevOps Adoption score <b>from 39 to 75</b>, the highest company-wide score among teams with comparably large portfolios.</li>
               <li>Integrated <b>SAST, DAST, and dependency scanning</b> into every pipeline; reverse-engineered each application's codebase, authentication structure (permissions, tokens, protected routes), and dependencies to configure <b>custom scans</b> that run against secured endpoints across many different system types.</li>
               <li>Automated artifact promotion and <b>deployment to the servers</b> with Jenkins; containerized workloads with Docker and tuned Kubernetes resource allocation per system.</li>
             </ul>
@@ -427,36 +461,89 @@
     <div class="sec-head"><span class="sec-idx">02</span><span class="sec-title">Projects</span><span class="sec-rule"></span></div>
     <div class="grid">
 
-      <div class="card">
+      <article class="card">
         <div class="role">Co-founder and Sole Backend Engineer</div>
-        <h3>Formira <span class="h3-sub">Pharmacy Quoting &amp; Compliance SaaS</span></h3>
+        <h3>Formira <span class="h3-sub">Pharmacy quoting and compliance SaaS</span></h3>
         <div class="yr">Feb 2023 - Present</div>
-        <p>Owned the full backend: <b>11 domain modules</b> with a pure, database-free core for exact-Decimal financial math and immutable, version-stamped quote snapshots. A <b>5-layer authorization pipeline</b> (tenant isolation, RBAC with default-deny, state-machine guards, field-level redaction) enforced through one central hook, plus an <b>append-only audit store</b> as the single source of truth.</p>
-        <div class="chips"><span>Python</span><span>Django REST</span><span>PostgreSQL</span><span>Docker</span><span>CI/CD</span><span>2,900 tests</span></div>
-      </div>
+        <p>Own the entire backend of a multi-tenant SaaS pharmacies use to price compounded formulas and stay auditable. <b>11 domain modules</b> around a core that touches no database, so financial math is exact Decimal and every quote is an immutable, version-stamped snapshot. Preparing pilot launch.</p>
+        <div class="proj-metrics">
+          <div><span class="n">5</span><span class="l">authz layers, one hook</span></div>
+          <div><span class="n">11</span><span class="l">domain modules</span></div>
+          <div><span class="n">2,900</span><span class="l">automated tests</span></div>
+          <div><span class="n">0</span><span class="l">endpoints that can bypass</span></div>
+        </div>
+        <div class="chips"><span>Python</span><span>Django REST</span><span>PostgreSQL</span><span>Docker</span><span>CI/CD</span></div>
+        <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="formira-more"
+                data-more="See how a request flows" data-less="Hide the request flow">
+          <span class="tg-caret" aria-hidden="true">&rsaquo;</span><span class="tg-label">See how a request flows</span>
+        </button>
+        <div class="proj-more" id="formira-more"><div class="pm-in">
+        <figure class="card-media">
+          <div class="diagram-wrap">
+            <img class="diagram zoomable" src="assets/formira/architecture.svg" data-full="assets/formira/architecture.svg" alt="Formira request path. An API request passes through five authorization layers, tenant isolation, plan entitlement gating, capability-based RBAC, state-machine guards and field-level redaction, all inside one enforcement hook, before reaching a domain core of 11 modules. Writes emit events into an append-only audit store, and reporting and compliance are read-only projections over it.">
+          </div>
+          <figcaption><b>The request path.</b> Every call crosses the same five gates before it reaches domain logic, so a new endpoint cannot ship without authorization. Writes land in the audit store first, and reporting and compliance only ever read from it. <span class="zoom-hint">click to enlarge, or swipe it on a phone</span></figcaption>
+        </figure>
+        </div></div>
+      </article>
 
-      <div class="card">
-        <div class="role">Software Team Lead</div>
-        <h3>Panther Robotics, RL Arm Control</h3>
-        <div class="yr">Aug 2023 - Dec 2024</div>
-        <p>Led a <b>7-member team</b> exploring reinforcement learning for robotic-arm control in simulation, experimenting with different policies across physics engines. A hands-on research and learning project that got the team fluent in RL and robotics simulation.</p>
-        <div class="chips"><span>Keras</span><span>PyBullet</span><span>Isaac Sim</span><span>Reinforcement Learning</span></div>
-      </div>
-
-      <div class="card card--wide">
+      <article class="card">
         <div class="role">Detection Model and Inference Service, Team of 3</div>
         <h3>ASL Arcade <span class="h3-sub">Real-time American Sign Language recognition</span></h3>
         <div class="yr">36 hours at ShellHacks 2024, Florida's largest hackathon</div>
-        <p>A 3D arcade game that teaches the ASL alphabet: it asks the player to sign a letter, watches through the webcam, and says whether they got it right. I trained the detector and built the service behind it, fine-tuning and comparing <b>two YOLOv8 backbones</b> on 26 letter classes, then serving the winner behind an HTTP endpoint that scores one frame at a time at <b>12 ms per frame</b>. The game posts a frame plus the letter it asked for and gets back a verdict, so it never has to know anything about the model. Daniel Estrada built the Unity client.</p>
+        <p>A 3D arcade game that teaches the ASL alphabet: walk up to a cabinet, it asks you to sign a letter, and it watches through your webcam to tell you whether you got it. I trained the detector and built the service behind it, fine-tuning and comparing <b>two YOLOv8 backbones</b> across 26 letter classes, then serving the winner behind an HTTP endpoint that scores a frame in <b>12 ms</b> on a laptop GPU. The game posts a frame plus the letter it asked for and gets back a verdict, so it never has to know anything about the model. Daniel Estrada built the Unity client.</p>
+        <div class="chips"><span>Python</span><span>YOLOv8</span><span>PyTorch</span><span>Flask</span><span>OpenCV</span><span>CUDA</span><span>Unity</span></div>
+        <div class="proj-links">
+          <a href="https://github.com/FrancoSilvestri/asl-arcade" target="_blank" rel="noopener">Code on GitHub</a>
+          <a href="https://github.com/FrancoSilvestri/asl-arcade/blob/main/vision-service/docs/metrics.md" target="_blank" rel="noopener">How well it really works</a>
+          <a href="https://github.com/FrancoSilvestri/asl-arcade/releases/tag/v1.0.0" target="_blank" rel="noopener">Download and play it</a>
+        </div>
+        <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="asl-more"
+                data-more="Watch it running" data-less="Hide the demos">
+          <span class="tg-caret" aria-hidden="true">&rsaquo;</span><span class="tg-label">Watch it running</span>
+        </button>
+        <div class="proj-peek" aria-hidden="true">
+          <img src="assets/asl/gameplay-poster.jpg" alt="" loading="lazy">
+          <img src="assets/asl/shot-arcade.jpg" alt="" loading="lazy">
+          <img src="assets/asl/detection-poster.jpg" alt="" loading="lazy">
+        </div>
+        <div class="proj-more" id="asl-more"><div class="pm-in">
         <figure class="card-media">
-          <video controls preload="none" poster="assets/asl-demo-poster.jpg" playsinline>
-            <source src="assets/asl-demo.mp4" type="video/mp4">
+          <video controls preload="none" poster="assets/asl/gameplay-poster.jpg" playsinline>
+            <source src="assets/asl/gameplay.mp4" type="video/mp4">
           </video>
-          <figcaption><b>The shipped detector, on footage recorded at the venue.</b> Green means the service accepted the sign at its 0.65 threshold, amber means it saw something but would not commit. It reaches <b>0.861 mAP@50-95</b> on the held-out split and is far less certain on unseen webcam frames, which is a training-data diversity problem, <a href="https://github.com/FrancoSilvestri/asl-arcade/blob/main/vision-service/docs/metrics.md" target="_blank" rel="noopener">written up here</a>.</figcaption>
+          <figcaption><b>The game, recorded at the event.</b> Title screen, the arcade room, then a full round: the cabinet asks for a letter, the webcam feed goes to the service frame by frame, and the verdict comes back.</figcaption>
         </figure>
-        <div class="chips"><span>Python</span><span>YOLOv8</span><span>PyTorch</span><span>Flask</span><span>OpenCV</span><span>CUDA</span></div>
-        <p style="margin-top:14px"><a href="https://github.com/FrancoSilvestri/asl-arcade" target="_blank" rel="noopener">Code on GitHub</a></p>
-      </div>
+        <figure class="card-media">
+          <video controls preload="none" poster="assets/asl/detection-poster.jpg" playsinline>
+            <source src="assets/asl/detection.mp4" type="video/mp4">
+          </video>
+          <figcaption><b>What the service sees.</b> Green means it accepted the sign at the 0.65 threshold, amber means it saw something but would not commit. The model reaches <b>0.861 mAP@50-95</b> on the held-out split and is far less sure on unseen webcam frames, which is a training-data diversity problem and <a href="https://github.com/FrancoSilvestri/asl-arcade/blob/main/vision-service/docs/metrics.md" target="_blank" rel="noopener">written up honestly here</a>.</figcaption>
+        </figure>
+        <div class="gallery gallery-3">
+          <figure class="shot">
+            <img class="zoomable" src="assets/asl/shot-title.jpg" data-full="assets/asl/shot-title.jpg" data-cap="The title screen." alt="ASL Learner title screen with a low-poly character standing beside an arcade cabinet" loading="lazy">
+            <figcaption><span class="t">Title</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img class="zoomable" src="assets/asl/shot-arcade.jpg" data-full="assets/asl/shot-arcade.jpg" data-cap="The arcade room. Each cabinet drills a different part of the alphabet." alt="The 3D arcade room with several cabinets and a prize wheel" loading="lazy">
+            <figcaption><span class="t">The arcade room</span></figcaption>
+          </figure>
+          <figure class="shot">
+            <img class="zoomable" src="assets/asl/shot-machine.jpg" data-full="assets/asl/shot-machine.jpg" data-cap="Walk into a cabinet and it offers to start a round." alt="Standing in front of a cabinet with the prompt Press P to play" loading="lazy">
+            <figcaption><span class="t">A cabinet, ready to play</span></figcaption>
+          </figure>
+        </div>
+        </div></div>
+      </article>
+
+      <article class="card">
+        <div class="role">Software Team Lead</div>
+        <h3>Panther Robotics <span class="h3-sub">Reinforcement learning for robotic-arm control</span></h3>
+        <div class="yr">Aug 2023 - Dec 2024</div>
+        <p>Led a <b>7-member team</b> exploring reinforcement learning for robotic-arm control in simulation, comparing policies across physics engines. A research and learning project that got the team fluent in RL and robotics simulation.</p>
+        <div class="chips"><span>Keras</span><span>PyBullet</span><span>Isaac Sim</span><span>Reinforcement Learning</span></div>
+      </article>
 
     </div>
   </section>
@@ -465,7 +552,7 @@
 
 <!-- ===== SCENE DIVIDER ===== -->
 <div class="scene">
-  <div class="scene-bg" style="background-image:url('assets/demo-ar-menu.jpg')" aria-hidden="true"></div>
+  <div class="scene-bg" style="background-image:url('assets/spot/ar-menu.jpg')" aria-hidden="true"></div>
   <div class="scene-cap">
     <div class="k">In the field</div>
     <h3>Real robots, real environments, real-time perception.</h3>
@@ -479,31 +566,31 @@
     <div class="sec-head"><span class="sec-idx">03</span><span class="sec-title">Field Demos</span><span class="sec-rule"></span></div>
     <p class="demo-intro">Real-time perception, AR human-robot control, and autonomous exploration on a Boston Dynamics SPOT, captured from live runs in DOE-relevant environments.</p>
     <figure class="demo-feature">
-      <video controls preload="none" poster="assets/autonomous-poster.jpg" playsinline>
-        <source src="assets/autonomous-demo.mp4" type="video/mp4">
+      <video controls preload="none" poster="assets/spot/autonomous-poster.jpg" playsinline>
+        <source src="assets/spot/autonomous.mp4" type="video/mp4">
       </video>
       <figcaption><b>Autonomous run.</b> Onboard navigation and SLAM mapping (Nav2) while a GPyTorch Gaussian Process predicts the live CO2 contaminant field in real time, streamed to the operator.</figcaption>
     </figure>
     <div class="gallery">
       <figure class="shot">
-        <img src="assets/demo-ar-menu.jpg" alt="Boston Dynamics SPOT robot with a floating augmented-reality command menu in an operator's AR view" loading="lazy">
-        <figcaption><span class="t">AR Human-Robot Control</span><span class="d">Spatial command menu (go-to, calibrate, recall) anchored in the operator's AR view of the robot.</span></figcaption>
+        <img class="zoomable" src="assets/spot/ar-menu.jpg" data-full="assets/spot/ar-menu.jpg" data-cap="AR human-robot control. Spatial command menu (go-to, calibrate, recall) anchored in the operator's AR view of the robot." alt="Boston Dynamics SPOT robot with a floating augmented-reality command menu in an operator's AR view" loading="lazy">
+        <figcaption><span class="t">AR Human-Robot Control</span></figcaption>
+      </figure>
+      <figure class="shot shot--tall">
+        <img class="zoomable" src="assets/spot/gp.jpg" data-full="assets/spot/gp.jpg" data-cap="Probabilistic contaminant field. Online Gaussian-Process estimate with an uncertainty boundary, fusing gas-sensor readings with SLAM odometry in real time." alt="Probabilistic contaminant field estimated by an online Gaussian Process, with an uncertainty boundary" loading="lazy">
+        <figcaption><span class="t">Contaminant Field</span></figcaption>
+      </figure>
+      <figure class="shot shot--tall">
+        <img class="zoomable" src="assets/spot/explore.jpg" data-full="assets/spot/explore.jpg" data-cap="Autonomous exploration. Open-frontier planning traced over a live SLAM map while the robot maps an unknown space." alt="Autonomous open-frontier exploration path over a live SLAM map of an unknown environment" loading="lazy">
+        <figcaption><span class="t">Autonomous Exploration</span></figcaption>
       </figure>
       <figure class="shot">
-        <img src="assets/demo-gp.jpg" alt="Probabilistic contaminant field estimated by an online Gaussian Process, with an uncertainty boundary" loading="lazy">
-        <figcaption><span class="t">Probabilistic Contaminant Field</span><span class="d">Online Gaussian-Process estimate with uncertainty, fusing gas-sensor readings with SLAM odometry in real time.</span></figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="assets/demo-explore.jpg" alt="Autonomous open-frontier exploration path over a live SLAM map of an unknown environment" loading="lazy">
-        <figcaption><span class="t">Autonomous Exploration</span><span class="d">Open-frontier planning traced over a live SLAM map while mapping an unknown space.</span></figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="assets/demo-ar-control.jpg" alt="First-person AR teleoperation of the SPOT arm using a hand controller with a 6-DoF gizmo" loading="lazy">
-        <figcaption><span class="t">AR Arm Teleoperation</span><span class="d">6-DoF manipulator control through an AR headset and hand controller, overlaid on the live arm.</span></figcaption>
+        <img class="zoomable" src="assets/spot/ar-control.jpg" data-full="assets/spot/ar-control.jpg" data-cap="AR arm teleoperation. 6-DoF manipulator control through an AR headset and hand controller, overlaid on the live arm." alt="First-person AR teleoperation of the SPOT arm using a hand controller with a 6-DoF gizmo" loading="lazy">
+        <figcaption><span class="t">AR Arm Teleoperation</span></figcaption>
       </figure>
     </div>
     <figure class="demo-feature demo-seg">
-      <img class="seg-img" src="assets/robot-segmentation.jpg" alt="STEGO semantic segmentation showing the input image, cluster predictions, and linear-probe predictions across indoor scenes" loading="lazy">
+      <img class="seg-img" src="assets/spot/segmentation.jpg" alt="STEGO semantic segmentation showing the input image, cluster predictions, and linear-probe predictions across indoor scenes" loading="lazy">
       <figcaption><b>Semantic segmentation (STEGO).</b> A self-supervised transformer segments navigation-critical surfaces: input image, cluster predictions, and linear-probe predictions across indoor scenes.</figcaption>
     </figure>
   </section>
@@ -511,8 +598,8 @@
   <!-- RESEARCH -->
   <section class="rv" id="research">
     <div class="sec-head"><span class="sec-idx">04</span><span class="sec-title">Research</span><span class="sec-rule"></span></div>
-    <a class="poster" href="assets/Mercury_Characterization_Poster.pdf" target="_blank" rel="noopener">
-      <div class="poster-img"><img src="assets/poster-thumb.jpg" alt="Research poster: Real-time Mercury Characterization for DOE Legacy Facilities Decommissioning Using Mobile Robotic Platforms" loading="lazy"></div>
+    <a class="poster" href="assets/research/Mercury_Characterization_Poster.pdf" target="_blank" rel="noopener">
+      <div class="poster-img"><img src="assets/research/poster-thumb.jpg" alt="Research poster: Real-time Mercury Characterization for DOE Legacy Facilities Decommissioning Using Mobile Robotic Platforms" loading="lazy"></div>
       <div class="poster-body">
         <div class="role">First-Author Poster (opens full PDF)</div>
         <h3>Real-Time Mercury Characterization for DOE Legacy Facilities Decommissioning Using Mobile Robotic Platforms</h3>
@@ -536,7 +623,7 @@
 
     <div class="init-workshops">
       <figure class="portrait">
-        <img src="assets/init-teaching.jpg" alt="Franco Silvestri teaching a hands-on robotics and electronics workshop at INIT FIU" loading="lazy">
+        <img src="assets/init/teaching.jpg" alt="Franco Silvestri teaching a hands-on robotics and electronics workshop at INIT FIU" loading="lazy">
         <figcaption>Teaching a hands-on electronics workshop at INIT</figcaption>
       </figure>
       <div class="init-wk-body">
@@ -562,7 +649,7 @@
       <p>I also ran a 3 to 5 AM live build with <b>40+ students</b>: an RGB mood lamp using the Arduino RGB module, remote-controlled with multiple lighting patterns.</p>
     </div>
     <div class="panel preshell-feature">
-      <img src="assets/init-preshellhacks.jpg" alt="Pre-ShellHacks Intro to Electronics workshop flyer, with Franco helping a student build electronics" loading="lazy">
+      <img src="assets/init/preshellhacks.jpg" alt="Pre-ShellHacks Intro to Electronics workshop flyer, with Franco helping a student build electronics" loading="lazy">
       <div>
         <div class="role">Pre-ShellHacks Prep Workshop</div>
         <h3>Intro to Electronics</h3>
@@ -693,7 +780,8 @@
 <!-- certificate lightbox -->
 <div id="lightbox" class="lightbox" aria-hidden="true">
   <button class="lb-close" aria-label="Close">&times;</button>
-  <img class="lb-img" src="" alt="Certificate, full view">
+  <img class="lb-img" src="" alt="Full view">
+  <p class="lb-cap"></p>
   <a class="lb-pdf" href="" target="_blank" rel="noopener">Open original (PDF)</a>
 </div>
 
@@ -735,15 +823,33 @@
     var initEl=document.getElementById('init'); if(initEl && map['init']) spy.observe(initEl);
   })();
 
+  // expandable project cases
+  (function(){
+    document.querySelectorAll('.proj-toggle').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var card=btn.closest('.card');
+        var open=card.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open?'true':'false');
+        btn.querySelector('.tg-label').textContent = open ? btn.dataset.less : btn.dataset.more;
+        if(!open){
+          card.querySelectorAll('video').forEach(function(v){ if(!v.paused) v.pause(); });
+          var top=card.getBoundingClientRect().top;
+          if(top<0) card.scrollIntoView({block:'start',behavior:'smooth'});
+        }
+      });
+    });
+  })();
+
   // certificate lightbox
   (function(){
     var lb=document.getElementById('lightbox'); if(!lb) return;
-    var img=lb.querySelector('.lb-img'), pdf=lb.querySelector('.lb-pdf');
-    function open(full,href){ img.src=full; if(href){pdf.href=href;pdf.style.display='';}else{pdf.style.display='none';}
+    var img=lb.querySelector('.lb-img'), pdf=lb.querySelector('.lb-pdf'), cap=lb.querySelector('.lb-cap');
+    function open(full,href,text){ img.src=full; cap.textContent=text||'';
+      if(href){pdf.href=href;pdf.style.display='';}else{pdf.style.display='none';}
       lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); }
-    function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); img.src=''; }
-    document.querySelectorAll('.cert-thumb').forEach(function(b){
-      b.addEventListener('click',function(){ open(b.getAttribute('data-full'), b.getAttribute('data-pdf')); }); });
+    function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); img.src=''; cap.textContent=''; }
+    document.querySelectorAll('.cert-thumb, .zoomable').forEach(function(b){
+      b.addEventListener('click',function(){ open(b.getAttribute('data-full'), b.getAttribute('data-pdf'), b.getAttribute('data-cap')); }); });
     lb.addEventListener('click',function(e){ if(e.target===lb || e.target.classList.contains('lb-close')) close(); });
     document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
   })();
